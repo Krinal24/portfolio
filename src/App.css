@@ -1,42 +1,233 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
+body {
+  background: #f6f6fb;
+  color: #111;
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+  padding: 60px 120px;
+}
+
+/* Logo */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  position: absolute;
+  top: 30px;
+  left: 120px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Floating Navbar */
+.floating-nav {
+  position: absolute;
+  right: 120px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.floating-nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.card {
-  padding: 2em;
+.floating-nav a:hover {
+  color: #7c3aed;
 }
 
-.read-the-docs {
-  color: #888;
+/* Hero Layout */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 120px;
+}
+
+/* LEFT SIDE */
+.hero-left {
+  max-width: 600px;
+}
+
+.greeting {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.name span {
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.role {
+  margin-top: 18px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #444;
+}
+
+.tagline {
+  margin-top: 16px;
+  font-size: 17px;
+  color: #666;
+  max-width: 450px;
+}
+
+.primary-btn {
+  display: inline-block;
+  margin-top: 30px;
+  background: linear-gradient(90deg, #7c3aed, #9333ea);
+  padding: 12px 30px;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  opacity: 0.85;
+}
+
+.socials {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.socials a {
+  color: #555;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #7c3aed;
+}
+
+/* RIGHT SIDE */
+/* Hero Layout - 3 Column */
+.hero {
+  display: grid;
+  /* Make left column noticeably wider than the middle */
+  grid-template-columns: 1.8fr 1fr 0.6fr;
+  align-items: center;
+  margin-top: 120px;
+}
+
+/* CENTER PHOTO */
+.hero-center {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Nudge the photo slightly to the right so it overlaps the rectangle more */
+.hero-center {
+  transform: translateX(18px);
+}
+
+/* RIGHT TEXT NAV */
+.hero-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Rightmost column: larger and bolder for emphasis */
+.hero-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.hero-nav a:hover {
+  color: #7c3aed;
+}
+
+/* Push the right column content to the far edge of its grid column */
+.hero-nav {
+  justify-self: end;
+  align-items: flex-end;
+  text-align: right;
+}
+
+/* Rectangular Gradient Background */
+.gradient-rectangle {
+  position: absolute;
+  /* Slightly larger so it fully covers and bleeds behind the photo */
+  width: 380px;
+  height: 300px;
+  border-radius: 34px;
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  filter: blur(44px);
+  opacity: 0.45;
+  z-index: 0;
+}
+
+/* Circular Image */
+.image-wrapper {
+  position: relative;
+  /* Reduced size so the photo sits a bit smaller over the rectangle */
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  z-index: 1;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  font-size: 30px;
+  color: #7c3aed;
+  background: rgba(124,58,237,0.12);
+  padding: 10px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(124,58,237,0.12);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
 }

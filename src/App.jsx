@@ -1,62 +1,81 @@
+import { useState, useEffect } from "react";
 import "./App.css";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
   return (
     <div className="app">
 
-      {/* Logo */}
-      <div className="logo">Krinal N</div>
+      {/* NAVBAR */}
+      <nav className="navbar">
+        <div className="nav-logo">Krinal N</div>
 
+        <div className="nav-links">
+          {["Home", "Experience", "Skills", "Education", "Achievements", "Contact"].map((item) => (
+            <a key={item} href={`#${item.toLowerCase()}`}>
+              {item}
+            </a>
+          ))}
 
-      <section className="hero">
+          {/* DARK MODE BUTTON */}
+          <button
+            className="theme-toggle"
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? <FiSun /> : <FiMoon />}
+          </button>
+        </div>
+      </nav>
 
-  {/* LEFT */}
-  <div className="hero-left">
-    <p className="greeting">Hi there 👋</p>
+      {/* HERO */}
+      <section className="hero" id="home">
 
-    <h1 className="name">
-      I'm <span>Krinal Naghera</span>
-    </h1>
+        <div className="hero-left">
+          <p className="greeting">Hi there 👋</p>
 
-    <h2 className="role">
-      Software Engineer Associate @ Telstra
-    </h2>
+          <h1 className="name">
+            I'm <span>Krinal Naghera</span>
+          </h1>
 
-    <p className="tagline">
-      Building intelligent software solutions that create real impact.
-    </p>
+          <h2 className="role">
+            Software Engineer Associate @ Telstra
+          </h2>
 
-    <a href="#contact" className="primary-btn">
-      Get in touch
-    </a>
+          <p className="tagline">
+            Building intelligent software solutions that create real impact.
+          </p>
 
-    <div className="socials">
-      {/* icons here */}
-    </div>
-  </div>
+          <a href="#contact" className="primary-btn">
+            Get in touch
+          </a>
 
-  {/* CENTER (PHOTO) */}
-  <div className="hero-center">
-    <div className="gradient-rectangle"></div>
-    <div className="image-wrapper">
-      <img src="/Krinal_Naghera.jpeg" alt="Krinal" />
-    </div>
-  </div>
+          <div className="socials">
+            <a href="#"><FaGithub /></a>
+            <a href="#"><FaLinkedin /></a>
+            <a href="#"><SiLeetcode /></a>
+          </div>
+        </div>
 
-  {/* RIGHT TEXT NAV */}
-  <div className="hero-nav">
-    {["Home", "Experience", "Skills", "Education", "Achievements", "Contact"].map((item) => (
-      <a key={item} href={`#${item.toLowerCase()}`}>
-        {item}
-      </a>
-    ))}
-  </div>
+        {/* RIGHT SIDE IMAGE */}
+        <div className="hero-center">
+          <div className="gradient-rectangle"></div>
 
-</section>
+          <div className="image-wrapper">
+            <img src="/Krinal_Naghera.jpeg" alt="Krinal" />
+          </div>
+        </div>
 
-      <div className="scroll-indicator" aria-label="scroll down">⬇</div>
+      </section>
+
+      <div className="scroll-indicator">⬇</div>
 
     </div>
   );

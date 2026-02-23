@@ -8,94 +8,123 @@
 body {
   background: #f6f6fb;
   color: #111;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+/* ================= APP WRAPPER ================= */
 
 .app {
   min-height: 100vh;
+  padding-top: 100px; /* space for fixed navbar */
+  padding-left: 200px;
   position: relative;
-  padding: 60px 120px;
 }
 
-/* Logo */
-.logo {
-  position: absolute;
-  top: 30px;
-  left: 120px;
-  font-size: 14px;
-  font-weight: 600;
+/* ================= NAVBAR ================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 120px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
-/* Floating Navbar */
-.floating-nav {
-  position: absolute;
-  right: 120px;
-  top: 50%;
-  transform: translateY(-50%);
+.nav-links {
   display: flex;
-  flex-direction: column;
-  gap: 22px;
+  align-items: center;
+  gap: 40px;
 }
 
-.floating-nav a {
+.nav-links a {
   text-decoration: none;
   color: #555;
   font-weight: 500;
   transition: 0.3s;
 }
 
-.floating-nav a:hover {
+.nav-links a:hover {
   color: #7c3aed;
 }
 
-/* Hero Layout */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+  transition: 0.3s;
+}
+
+.theme-toggle:hover {
+  color: #7c3aed;
+}
+
+/* ================= HERO SECTION ================= */
+
 .hero {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 120px;
+  min-height: calc(80vh - 100px);
 }
 
 /* LEFT SIDE */
+
 .hero-left {
   max-width: 600px;
 }
 
 .greeting {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
 }
 
 .name {
-  font-size: 60px;
+  font-size: 64px;
   font-weight: 800;
   line-height: 1.1;
 }
 
 .name span {
-  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  background: linear-gradient(90deg, #523aed, #5588f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .role {
-  margin-top: 18px;
-  font-size: 22px;
+  margin-top: 20px;
+  font-size: 25px;
   font-weight: 500;
-  color: #444;
+  color: #07097e;
 }
 
 .tagline {
-  margin-top: 16px;
-  font-size: 17px;
-  color: #666;
+  margin-top: 18px;
+  font-size: 20px;
+  color: #090101;
   max-width: 450px;
 }
 
 .primary-btn {
   display: inline-block;
   margin-top: 30px;
-  background: linear-gradient(90deg, #7c3aed, #9333ea);
+  background: linear-gradient(90deg, #3a64ed, #3370ea);
   padding: 12px 30px;
   color: white;
   text-decoration: none;
@@ -112,7 +141,7 @@ body {
   margin-top: 25px;
   display: flex;
   gap: 20px;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .socials a {
@@ -121,82 +150,40 @@ body {
 }
 
 .socials a:hover {
-  color: #7c3aed;
+  color: #463aed;
 }
 
-/* RIGHT SIDE */
-/* Hero Layout - 3 Column */
-.hero {
-  display: grid;
-  /* Make left column noticeably wider than the middle */
-  grid-template-columns: 1.8fr 1fr 0.6fr;
-  align-items: center;
-  margin-top: 120px;
-}
+/* RIGHT SIDE IMAGE */
 
-/* CENTER PHOTO */
 .hero-center {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  padding-right: 60px; /* pushes image more right */
 }
 
-/* Nudge the photo slightly to the right so it overlaps the rectangle more */
-.hero-center {
-  transform: translateX(18px);
-}
+/* Gradient Background */
 
-/* RIGHT TEXT NAV */
-.hero-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-/* Rightmost column: larger and bolder for emphasis */
-.hero-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 700;
-  font-size: 18px;
-  transition: 0.2s;
-}
-
-.hero-nav a:hover {
-  color: #7c3aed;
-}
-
-/* Push the right column content to the far edge of its grid column */
-.hero-nav {
-  justify-self: end;
-  align-items: flex-end;
-  text-align: right;
-}
-
-/* Rectangular Gradient Background */
 .gradient-rectangle {
   position: absolute;
-  /* Slightly larger so it fully covers and bleeds behind the photo */
   width: 380px;
   height: 300px;
-  border-radius: 34px;
-  background: linear-gradient(135deg, #7c3aed, #c084fc);
-  filter: blur(44px);
+  border-radius: 40px;
+  background: linear-gradient(135deg, #3a73ed, #84aafc);
+  filter: blur(50px);
   opacity: 0.45;
   z-index: 0;
 }
 
 /* Circular Image */
+
 .image-wrapper {
   position: relative;
-  /* Reduced size so the photo sits a bit smaller over the rectangle */
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   padding: 6px;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  background: linear-gradient(135deg, #ffffff, #ffffff);
   z-index: 1;
 }
 
@@ -208,24 +195,54 @@ body {
   display: block;
 }
 
-/* Scroll Indicator */
+/* ================= SCROLL INDICATOR ================= */
+
 .scroll-indicator {
   position: absolute;
   bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
-  font-size: 30px;
-  color: #7c3aed;
-  background: rgba(124,58,237,0.12);
+  left: 60%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  color: #3a3aed;
+  background: rgba(58, 142, 237, 0.12);
   padding: 10px 14px;
   border-radius: 999px;
-  box-shadow: 0 8px 24px rgba(124,58,237,0.12);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  animation: bounce 2s infinite;
+  animation: bounce 1.5s infinite;
 }
+
+/* ================= DARK MODE ================= */
+
+body.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+body.dark .navbar {
+  background: rgba(15, 23, 42, 0.75);
+}
+
+body.dark .nav-links a {
+  color: #cbd5e1;
+}
+
+body.dark .nav-links a:hover {
+  color: #a855f7;
+}
+
+body.dark .role {
+  color: #cbd5e1;
+}
+
+body.dark .tagline {
+  color: #94a3b8;
+}
+
+body.dark .socials a {
+  color: #cbd5e1;
+}
+
+
+/* ================= ANIMATION ================= */
 
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }

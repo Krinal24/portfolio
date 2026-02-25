@@ -453,3 +453,34 @@ body.dark .view-toggle-btn {
   margin-left: 0;
   margin-right: 0;
 }
+
+.experience-card {
+  border-radius: 20px;
+  transition: 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+}
+
+.company-name {
+  font-weight: 700;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.dark .description {
+  color: #ddd;
+}
+
+.skill-badge {
+  background: linear-gradient(135deg, #5f6fff, #7a5cff);
+  color: white;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+}

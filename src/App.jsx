@@ -12,6 +12,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [activeExp, setActiveExp] = useState(0);
   const [viewAll, setViewAll] = useState(false);
+  const exp = experiences[activeExp];
 
   useEffect(() => {
     document.body.classList.toggle("dark", darkMode);
@@ -127,38 +128,55 @@ function App() {
 
             {/* SINGLE CARD */}
             <div className="container mt-5">
-              <div className="card shadow-lg border-0 experience-card">
-                <div className="card-body p-4">
-                  <div className="d-flex align-items-center mb-3">
-                    <FaBuilding className="company-icon me-2" />
-                    <h3 className="mb-0">
-                      {experiences[activeExp].company}
-                    </h3>
-                  </div>
+              <div className="card shadow-lg border-0 experience-card h-100">
+  <div className="card-body p-4">
 
-                  <h5 className="fw-semibold">
-                    {experiences[activeExp].role}
-                  </h5>
+    <div className="row">
 
-                  <p className="domain">
-                    {experiences[activeExp].duration}
-                  </p>
+      {/* LEFT SIDE */}
+      <div className="col-md-5 border-end pe-4">
 
-                  <p className="domain">
-                    {experiences[activeExp].domain}
-                  </p>
+        <h4 className="company-name mb-2">
+          <FaBuilding className="company-icon me-2" />
+          {exp.company}
+        </h4>
 
-                  <p>{experiences[activeExp].description}</p>
+        <h6 className="fw-semibold mb-2">
+          {exp.role}
+        </h6>
 
-                  <div className="mt-3">
-                    {experiences[activeExp].skills.map((skill, i) => (
-                      <span key={i} className="badge skill-badge me-2 mb-2">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+        <p className="text-muted mb-1">
+          {exp.duration}
+        </p>
+
+        <p className="domain mb-3">
+          {exp.domain}
+        </p>
+
+        <div>
+          {exp.skills.map((skill, i) => (
+            <span
+              key={i}
+              className="badge skill-badge me-2 mb-2"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="col-md-7 ps-4 d-flex align-items-center">
+        <p className="description mb-0">
+          {exp.description}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
             </div>
           </>
         )}
@@ -168,32 +186,55 @@ function App() {
           <div className="container mt-5">
             <div className="row">
               {experiences.map((exp, index) => (
-                <div key={index} className="col-md-6 mb-4">
+                <div key={index} className="col-12 mb-4">
                   <div className="card shadow-lg border-0 experience-card h-100">
                     <div className="card-body p-4">
-                      <div className="d-flex align-items-center mb-3">
-                        <FaBuilding className="company-icon me-2" />
-                        <h4 className="mb-0">{exp.company}</h4>
-                      </div>
 
-                      <h6 className="fw-semibold">{exp.role}</h6>
+    <div className="row">
 
-                      <p className="domain mb-1">{exp.duration}</p>
-                      <p className="domain mb-3">{exp.domain}</p>
+      {/* LEFT SIDE */}
+      <div className="col-md-5 border-end pe-4">
 
-                      <p>{exp.description}</p>
+        <h4 className="company-name mb-2">
+          <FaBuilding className="company-icon me-2" />
+          {exp.company}
+        </h4>
 
-                      <div className="mt-3">
-                        {exp.skills.map((skill, i) => (
-                          <span
-                            key={i}
-                            className="badge skill-badge me-2 mb-2"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+        <h6 className="fw-semibold mb-2">
+          {exp.role}
+        </h6>
+
+        <p className="text-muted mb-1">
+          {exp.duration}
+        </p>
+
+        <p className="domain mb-3">
+          {exp.domain}
+        </p>
+
+        <div>
+          {exp.skills.map((skill, i) => (
+            <span
+              key={i}
+              className="badge skill-badge me-2 mb-2"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="col-md-7 ps-4 d-flex align-items-center">
+        <p className="description mb-0">
+          {exp.description}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
                   </div>
                 </div>
               ))}

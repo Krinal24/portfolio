@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { experiences } from "./constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -10,50 +11,11 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [activeExp, setActiveExp] = useState(0);
-  const [viewAll, setViewAll] = useState(false); // 🔥 NEW STATE
+  const [viewAll, setViewAll] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
-
-  const experiences = [
-    {
-      company: "Telstra",
-      role: "Associate Software Engineer",
-      duration: "(July 2025 – Present)",
-      domain: "Enterprise Telecom | Network Digitisation",
-      description:
-        "Designing and delivering scalable backend microservices powering enterprise-grade broadband personalization platforms. I work extensively on distributed event-driven systems using Kafka and Camunda workflow orchestration.",
-      skills: ["Java", "Microservices", "Kafka", "Camunda", "Angular", "CI/CD"]
-    },
-    {
-      company: "MathCo",
-      role: "Data Engineer Intern",
-      duration: "(Jan 2025 – July 2025)",
-      domain: "Healthcare Analytics | Data Engineering",
-      description:
-        "Built optimized ETL pipelines and predictive analytics solutions for pharmaceutical referral optimization. Improved alert efficiency and reduced operational costs.",
-      skills: ["Python", "SQL", "ETL", "Machine Learning", "Data Pipelines"]
-    },
-    {
-      company: "NYXify Technologies",
-      role: "AI Intern",
-      duration: "(Mar 2024 – May 2024)",
-      domain: "Generative AI | LLM Systems",
-      description:
-        "Worked on LLM dataset preparation, evaluation benchmarking, and prompt engineering strategies to enhance AI performance.",
-      skills: ["LLMs", "Prompt Engineering", "NLP", "AI Evaluation"]
-    },
-    {
-      company: "Altigreen Propulsion Labs",
-      role: "Data Intern",
-      duration: "(Sep 2023 – Oct 2023)",
-      domain: "EV Analytics | Edge Data",
-      description:
-        "Analyzed large-scale EV telemetry datasets to improve predictive performance modeling and built dashboards for real-time insights.",
-      skills: ["Python", "Machine Learning", "Data Visualization", "Analytics"]
-    }
-  ];
 
   return (
     <div className="app">
@@ -120,126 +82,124 @@ function App() {
           <BsFillArrowRightCircleFill />
         </p>
 
-        {/* 🔥 TOGGLE BUTTON */}
-          <div className="view-toggle-wrapper">
-            <button
-              className="view-toggle-btn"
-              onClick={() => setViewAll(!viewAll)}
-            >
-              {viewAll ? "Back to Road View" : "View All at Once?"}
-            </button>
-          </div>
+        {/* TOGGLE BUTTON */}
+        <div className="view-toggle-wrapper">
+          <button
+            className="view-toggle-btn"
+            onClick={() => setViewAll(!viewAll)}
+          >
+            {viewAll ? "Back to Compact View" : "Watch in Road View"}
+          </button>
+        </div>
 
-        {/* 🚗 ROAD ONLY SHOWS IF NOT VIEW ALL */}
-        {!viewAll && (
-          <div className="road-container">
-            <div className="road-line"></div>
+        {/* ROAD VIEW */}
+        {viewAll && (
+          <>
+            <div className="road-container">
+              <div className="road-line"></div>
 
-            {experiences.map((exp, index) => (
+              {experiences.map((exp, index) => (
+                <div
+                  key={index}
+                  className={`road-stop ${
+                    activeExp === index ? "active" : ""
+                  }`}
+                  onClick={() => setActiveExp(index)}
+                  style={{
+                    left: `${(index / (experiences.length - 1)) * 100}%`
+                  }}
+                >
+                  <div className="stop-dot"></div>
+                  <p className="company-name">{exp.company}</p>
+                  <span className="mini-domain">{exp.domain}</span>
+                </div>
+              ))}
+
               <div
-                key={index}
-                className={`road-stop ${
-                  activeExp === index ? "active" : ""
-                }`}
-                onClick={() => setActiveExp(index)}
+                className="car"
                 style={{
-                  left: `${(index / (experiences.length - 1)) * 100}%`
+                  left: `${(activeExp / (experiences.length - 1)) * 100}%`
                 }}
               >
-                <div className="stop-dot"></div>
-                <p className="company-name">{exp.company}</p>
-                <span className="mini-domain">{exp.domain}</span>
+                <FaCarSide />
               </div>
-            ))}
+            </div>
 
-            <div
-              className="car"
-              style={{
-                left: `${(activeExp / (experiences.length - 1)) * 100}%`
-              }}
-            >
-              <FaCarSide />
+            {/* SINGLE CARD */}
+            <div className="container mt-5">
+              <div className="card shadow-lg border-0 experience-card">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <FaBuilding className="company-icon me-2" />
+                    <h3 className="mb-0">
+                      {experiences[activeExp].company}
+                    </h3>
+                  </div>
+
+                  <h5 className="fw-semibold">
+                    {experiences[activeExp].role}
+                  </h5>
+
+                  <p className="domain">
+                    {experiences[activeExp].duration}
+                  </p>
+
+                  <p className="domain">
+                    {experiences[activeExp].domain}
+                  </p>
+
+                  <p>{experiences[activeExp].description}</p>
+
+                  <div className="mt-3">
+                    {experiences[activeExp].skills.map((skill, i) => (
+                      <span key={i} className="badge skill-badge me-2 mb-2">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* VIEW ALL MODE */}
+        {!viewAll && (
+          <div className="container mt-5">
+            <div className="row">
+              {experiences.map((exp, index) => (
+                <div key={index} className="col-md-6 mb-4">
+                  <div className="card shadow-lg border-0 experience-card h-100">
+                    <div className="card-body p-4">
+                      <div className="d-flex align-items-center mb-3">
+                        <FaBuilding className="company-icon me-2" />
+                        <h4 className="mb-0">{exp.company}</h4>
+                      </div>
+
+                      <h6 className="fw-semibold">{exp.role}</h6>
+
+                      <p className="domain mb-1">{exp.duration}</p>
+                      <p className="domain mb-3">{exp.domain}</p>
+
+                      <p>{exp.description}</p>
+
+                      <div className="mt-3">
+                        {exp.skills.map((skill, i) => (
+                          <span
+                            key={i}
+                            className="badge skill-badge me-2 mb-2"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
-
-        <div className="container mt-5">
-          {/* 🔥 SINGLE CARD MODE */}
-          {!viewAll && (
-            <div className="card shadow-lg border-0 experience-card">
-              <div className="card-body p-4">
-                <div className="d-flex align-items-center mb-3">
-                  <FaBuilding className="company-icon me-2" />
-                  <h3 className="mb-0">
-                    {experiences[activeExp].company}
-                  </h3>
-                </div>
-
-                <h5 className="fw-semibold">
-                  {experiences[activeExp].role}
-                </h5>
-
-                <p className="domain">
-                  {experiences[activeExp].duration}
-                </p>
-
-                <p className="domain">
-                  {experiences[activeExp].domain}
-                </p>
-
-                <p>{experiences[activeExp].description}</p>
-
-                <div className="mt-3">
-                  {experiences[activeExp].skills.map((skill, i) => (
-                    <span key={i} className="badge skill-badge me-2 mb-2">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* 🔥 VIEW ALL MODE */}
-          {viewAll && (
-  <div className="row mt-4">
-    {experiences.map((exp, index) => (
-      <div key={index} className="col-md-6 mb-4">
-        <div className="card shadow-lg border-0 experience-card h-100">
-          <div className="card-body p-4">
-
-            <div className="d-flex align-items-center mb-3">
-              <FaBuilding className="company-icon me-2" />
-              <h4 className="mb-0">{exp.company}</h4>
-            </div>
-
-            <h6 className="fw-semibold">{exp.role}</h6>
-
-            <p className="domain mb-1">{exp.duration}</p>
-            <p className="domain mb-3">{exp.domain}</p>
-
-            <p className="description">{exp.description}</p>
-
-            <div className="mt-3">
-              {exp.skills.map((skill, i) => (
-                <span
-                  key={i}
-                  className="badge skill-badge me-2 mb-2"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-)}
-
-          
-        </div>
       </section>
     </div>
   );

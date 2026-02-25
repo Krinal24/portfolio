@@ -16,7 +16,7 @@ body {
 .app {
   min-height: 100vh;
   padding-top: 100px; /* space for fixed navbar */
-  padding-left: 150px;
+  padding-left: 100px;
   position: relative;
 }
 
@@ -447,4 +447,9 @@ body.dark .skill-badge {
 
 body.dark .view-toggle-btn {
   background: linear-gradient(90deg, #7c3aed, #6366f1);
+}
+
+#all-cards-view .row {
+  margin-left: 0;
+  margin-right: 0;
 }

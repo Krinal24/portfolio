@@ -490,6 +490,7 @@ body.dark .view-toggle-btn {
 
 /* Make them feel more premium */
 .experience-card .card-body {
+  margin-top: 25px;
   padding: 3rem;
 }
 
@@ -549,6 +550,7 @@ body.dark .duration {
   font-size: 17px;
   line-height: 1.9;
   color: #444;
+  white-space: pre-line;
 }
 
 .dark .description {

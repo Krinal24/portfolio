@@ -18,6 +18,27 @@ function App() {
     document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
+  useEffect(() => {
+  const cards = document.querySelectorAll(".experience-card");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show-card");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+
+  return () => observer.disconnect();
+}, [viewAll]);
+
   return (
     <div className="app">
       {/* NAVBAR */}
@@ -134,31 +155,28 @@ function App() {
     <div className="row">
 
       {/* LEFT SIDE */}
-      <div className="col-md-5 border-end pe-4">
+      <div className="col-md-5 left-section">
 
-        <h4 className="company-name mb-2">
+        <h4 className="company-title">
           <FaBuilding className="company-icon me-2" />
           {exp.company}
         </h4>
 
-        <h6 className="fw-semibold mb-2">
+        <h6 className="role-title">
           {exp.role}
         </h6>
 
-        <p className="text-muted mb-1">
+        <p className="duration">
           {exp.duration}
         </p>
 
-        <p className="domain mb-3">
+        <p className="domain">
           {exp.domain}
         </p>
 
-        <div>
+        <div className="skills-wrapper">
           {exp.skills.map((skill, i) => (
-            <span
-              key={i}
-              className="badge skill-badge me-2 mb-2"
-            >
+            <span key={i} className="skill-badge">
               {skill}
             </span>
           ))}
@@ -167,8 +185,8 @@ function App() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="col-md-7 ps-4 d-flex align-items-center">
-        <p className="description mb-0">
+      <div className="col-md-7 right-section">
+        <p className="description">
           {exp.description}
         </p>
       </div>
@@ -187,37 +205,34 @@ function App() {
             <div className="row">
               {experiences.map((exp, index) => (
                 <div key={index} className="col-12 mb-4">
-                  <div className="card shadow-lg border-0 experience-card h-100">
+                  <div className={`card shadow-lg border-0 experience-card h-100 ${index % 2 === 0 ? "fade-left" : "fade-right"}`}>
                     <div className="card-body p-4">
 
     <div className="row">
 
       {/* LEFT SIDE */}
-      <div className="col-md-5 border-end pe-4">
+      <div className="col-md-5 left-section">
 
-        <h4 className="company-name mb-2">
+        <h4 className="company-title">
           <FaBuilding className="company-icon me-2" />
           {exp.company}
         </h4>
 
-        <h6 className="fw-semibold mb-2">
+        <h6 className="role-title">
           {exp.role}
         </h6>
 
-        <p className="text-muted mb-1">
+        <p className="duration">
           {exp.duration}
         </p>
 
-        <p className="domain mb-3">
+        <p className="domain">
           {exp.domain}
         </p>
 
-        <div>
+        <div className="skills-wrapper">
           {exp.skills.map((skill, i) => (
-            <span
-              key={i}
-              className="badge skill-badge me-2 mb-2"
-            >
+            <span key={i} className="skill-badge">
               {skill}
             </span>
           ))}
@@ -226,8 +241,8 @@ function App() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="col-md-7 ps-4 d-flex align-items-center">
-        <p className="description mb-0">
+      <div className="col-md-7 right-section">
+        <p className="description">
           {exp.description}
         </p>
       </div>

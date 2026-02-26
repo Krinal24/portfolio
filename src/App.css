@@ -375,10 +375,19 @@ body.dark .mini-domain {
 /* ================= BOOTSTRAP CARD CUSTOM ================= */
 
 .experience-card {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 28px;
+  padding: 0;
+  min-height: 480px;
+  background: #ffffff;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.dark .experience-card {
+  background: #1e293b;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
 }
 
 .company-icon {
@@ -460,7 +469,76 @@ body.dark .view-toggle-btn {
 }
 
 .experience-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+}
+
+/* LEFT start position */
+.fade-left {
+  transform: translateX(-80px);
+}
+
+/* RIGHT start position */
+.fade-right {
+  transform: translateX(80px);
+}
+
+/* When visible */
+.experience-card.show-card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Make them feel more premium */
+.experience-card .card-body {
+  padding: 3rem;
+}
+
+/* Left Section */
+.left-section {
+  padding-right: 40px;
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+body.dark .left-section {
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Right Section */
+.right-section {
+  padding-left: 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* Titles */
+.company-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.role-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.duration {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+body.dark .duration {
+  color: #bbb;
+}
+
+/* Skills */
+.skills-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .company-name {
@@ -468,8 +546,8 @@ body.dark .view-toggle-btn {
 }
 
 .description {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.9;
   color: #444;
 }
 
@@ -480,7 +558,15 @@ body.dark .view-toggle-btn {
 .skill-badge {
   background: linear-gradient(135deg, #5f6fff, #7a5cff);
   color: white;
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 0.75rem;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-badge:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(95, 111, 255, 0.4);
 }

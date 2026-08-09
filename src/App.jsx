@@ -1,262 +1,189 @@
 import { useState, useEffect } from "react";
-import { experiences } from "./constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { taglines, promptOptions } from "./constants";
+import ChatbotPage from "./ChatbotPage";
 
-import { FaLinkedin, FaGithub, FaBuilding, FaCarSide } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FiSun, FiMoon } from "react-icons/fi";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [activeExp, setActiveExp] = useState(0);
-  const [viewAll, setViewAll] = useState(false);
-  const exp = experiences[activeExp];
+  const [typedText, setTypedText] = useState("");
+  const [taglineIndex, setTaglineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHoveringLink, setIsHoveringLink] = useState(false);
+  const [selectedPrompt, setSelectedPrompt] = useState(null);
 
   useEffect(() => {
     document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
   useEffect(() => {
-  const cards = document.querySelectorAll(".experience-card");
+    const handleMouseMove = (event) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show-card");
-        }
-      });
-    },
-    {
-      threshold: 0.15,
-    }
-  );
+    const handlePointerEnter = (event) => {
+      if (event.target.closest("a, button")) {
+        setIsHoveringLink(true);
+      }
+    };
 
-  cards.forEach((card) => observer.observe(card));
+    const handlePointerLeave = (event) => {
+      if (event.target.closest("a, button")) {
+        setIsHoveringLink(false);
+      }
+    };
 
-  return () => observer.disconnect();
-}, [viewAll]);
+    window.addEventListener("pointermove", handleMouseMove);
+    document.body.addEventListener("pointerover", handlePointerEnter);
+    document.body.addEventListener("pointerout", handlePointerLeave);
+
+    return () => {
+      window.removeEventListener("pointermove", handleMouseMove);
+      document.body.removeEventListener("pointerover", handlePointerEnter);
+      document.body.removeEventListener("pointerout", handlePointerLeave);
+    };
+  }, []);
+
+  useEffect(() => {
+    const currentTagline = taglines[taglineIndex];
+    const typingSpeed = isDeleting ? 25 : 55;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && charIndex < currentTagline.length) {
+        const nextCharIndex = charIndex + 1;
+        setTypedText(currentTagline.slice(0, nextCharIndex));
+        setCharIndex(nextCharIndex);
+        return;
+      }
+
+      if (!isDeleting && charIndex === currentTagline.length) {
+        setTimeout(() => setIsDeleting(true), 900);
+        return;
+      }
+
+      if (isDeleting && charIndex > 0) {
+        const nextCharIndex = charIndex - 1;
+        setTypedText(currentTagline.slice(0, nextCharIndex));
+        setCharIndex(nextCharIndex);
+        return;
+      }
+
+      if (isDeleting && charIndex === 0) {
+        setIsDeleting(false);
+        setTaglineIndex((taglineIndex + 1) % taglines.length);
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, taglineIndex]);
+
+  const handlePromptClick = (prompt) => {
+    setSelectedPrompt(prompt);
+  };
+
+  const resetToHome = () => {
+    setSelectedPrompt(null);
+  };
 
   return (
     <div className="app">
-      {/* NAVBAR */}
-      <nav className="navbar">
+      <div
+        className={`custom-cursor ${isHoveringLink ? "hovering" : ""}`}
+        style={{
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+        }}
+      >
+        <div className="cursor-core" />
+      </div>
+
+      {selectedPrompt ? (
+        <ChatbotPage
+          selectedPrompt={selectedPrompt}
+          onBack={resetToHome}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+        />
+      ) : (
+        <>
+          <nav className="navbar">
         <div className="nav-logo">Krinal N</div>
 
         <div className="nav-links">
-          {["Home", "Experience", "Contact"].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`}>
-              {item}
-            </a>
-          ))}
+          <a href="#home">Home</a>
+          <a href="#contact">Contact</a>
 
           <button
             className="theme-toggle"
             onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle dark mode"
           >
             {darkMode ? <FiSun /> : <FiMoon />}
           </button>
         </div>
       </nav>
 
-      {/* HERO */}
-      <section className="hero" id="home">
-        <div className="hero-left">
-          <p className="greeting">Hi there 👋</p>
+          <section className="hero" id="home">
+            <div className="hero-inner hero-layout">
+              <div className="hero-copy">
+                <p className="greeting">Hi There.</p>
 
-          <h1 className="name">
-            I'm <span>Krinal Naghera</span>
-          </h1>
+                <h1 className="name">
+                  I am <span>Krinal Naghera</span>
+                </h1>
 
-          <h2 className="role">
-            Software Engineer Associate @ Telstra
-          </h2>
+                <p className="subtitle">Software Engineer at Telstra</p>
 
-          <p className="tagline">
-            Building intelligent software solutions that create real impact.
-          </p>
-
-          <div className="socials">
-            <a href="#"><FaGithub /></a>
-            <a href="#"><FaLinkedin /></a>
-            <a href="#"><SiLeetcode /></a>
-          </div>
-        </div>
-
-        <div className="hero-center">
-          <div className="gradient-rectangle"></div>
-          <div className="image-wrapper">
-            <img src="/Krinal_Naghera.jpeg" alt="Krinal" />
-          </div>
-        </div>
-
-        <div className="scroll-indicator">⬇</div>
-      </section>
-
-      {/* EXPERIENCE SECTION */}
-      <section className="career-road" id="experience">
-        <h2 className="section-title">Experience Journey</h2>
-
-        <p className="road-hint">
-          Click milestones to explore my journey across different roles and industries{" "}
-          <BsFillArrowRightCircleFill />
-        </p>
-
-        {/* TOGGLE BUTTON */}
-        <div className="view-toggle-wrapper">
-          <button
-            className="view-toggle-btn"
-            onClick={() => setViewAll(!viewAll)}
-          >
-            {viewAll ? "Back to Compact View" : "Watch in Road View"}
-          </button>
-        </div>
-
-        {/* ROAD VIEW */}
-        {viewAll && (
-          <>
-            <div className="road-container">
-              <div className="road-line"></div>
-
-              {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className={`road-stop ${
-                    activeExp === index ? "active" : ""
-                  }`}
-                  onClick={() => setActiveExp(index)}
-                  style={{
-                    left: `${(index / (experiences.length - 1)) * 100}%`
-                  }}
-                >
-                  <div className="stop-dot"></div>
-                  <p className="company-name">{exp.company}</p>
-                  <span className="mini-domain">{exp.domain}</span>
+                <div className="typing-block" aria-live="polite">
+                  <span>{typedText}</span>
+                  <span className="cursor" aria-hidden="true"></span>
                 </div>
-              ))}
 
-              <div
-                className="car"
-                style={{
-                  left: `${(activeExp / (experiences.length - 1)) * 100}%`
-                }}
-              >
-                <FaCarSide />
+                <p className="subtitle">Find me on:</p>
+
+                <div className="socials">
+                  <a href="https://github.com/Krinal24" target="_blank" rel="noreferrer" aria-label="GitHub">
+                    <FaGithub />
+                  </a>
+                  <a href="https://linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <FaLinkedin />
+                  </a>
+                  <a href="https://leetcode.com/u/Kinu2404" target="_blank" rel="noreferrer" aria-label="LeetCode">
+                    <SiLeetcode />
+                  </a>
+                </div>
+              </div>
+
+              <div className="hero-panel">
+                <p className="panel-title">What do you want to learn about me?</p>
+
+                <div className="prompt-list">
+                  {promptOptions.map((prompt) => (
+                    <button
+                      key={prompt}
+                      className="prompt-pill"
+                      type="button"
+                      onClick={() => handlePromptClick(prompt)}
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+
+                <button type="button" className="connect-card" aria-label="Connect with me">
+                  <span>Connect with me</span>
+                  <span className="connect-arrow">→</span>
+                </button>
               </div>
             </div>
-
-            {/* SINGLE CARD */}
-            <div className="container mt-5">
-              <div className="card shadow-lg border-0 experience-card h-100">
-  <div className="card-body p-4">
-
-    <div className="row">
-
-      {/* LEFT SIDE */}
-      <div className="col-md-5 left-section">
-
-        <h4 className="company-title">
-          <FaBuilding className="company-icon me-2" />
-          {exp.company}
-        </h4>
-
-        <h6 className="role-title">
-          {exp.role}
-        </h6>
-
-        <p className="duration">
-          {exp.duration}
-        </p>
-
-        <p className="domain">
-          {exp.domain}
-        </p>
-
-        <div className="skills-wrapper">
-          {exp.skills.map((skill, i) => (
-            <span key={i} className="skill-badge">
-              {skill}
-            </span>
-          ))}
-        </div>
-
-      </div>
-
-      {/* RIGHT SIDE */}
-      <div className="col-md-7 right-section">
-        <p className="description">
-          {exp.description}
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</div>
-            </div>
-          </>
-        )}
-
-        {/* VIEW ALL MODE */}
-        {!viewAll && (
-          <div className="container mt-5">
-            <div className="row">
-              {experiences.map((exp, index) => (
-                <div key={index} className="col-12 mb-4">
-                  <div className={`card shadow-lg border-0 experience-card h-100 ${index % 2 === 0 ? "fade-left" : "fade-right"}`}>
-                    <div className="card-body p-4">
-
-    <div className="row">
-
-      {/* LEFT SIDE */}
-      <div className="col-md-5 left-section">
-
-        <h4 className="company-title">
-          <FaBuilding className="company-icon me-2" />
-          {exp.company}
-        </h4>
-
-        <h6 className="role-title">
-          {exp.role}
-        </h6>
-
-        <p className="duration">
-          {exp.duration}
-        </p>
-
-        <p className="domain">
-          {exp.domain}
-        </p>
-
-        <div className="skills-wrapper">
-          {exp.skills.map((skill, i) => (
-            <span key={i} className="skill-badge">
-              {skill}
-            </span>
-          ))}
-        </div>
-
-      </div>
-
-      {/* RIGHT SIDE */}
-      <div className="col-md-7 right-section">
-        <p className="description">
-          {exp.description}
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </section>
+          </section>
+        </>
+      )}
     </div>
   );
 }

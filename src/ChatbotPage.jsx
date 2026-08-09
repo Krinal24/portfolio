@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { chatbotContent } from "./constants";
 import "./ChatbotPage.css";
+import { FiSun, FiMoon } from "react-icons/fi";
 
-function ChatbotPage({ selectedPrompt, onBack }) {
+function ChatbotPage({ selectedPrompt, onBack, darkMode, setDarkMode }) {
   const promptData = chatbotContent[selectedPrompt] || chatbotContent.Experience;
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     setMessages([
+      {
+        sender: "user",
+        text: selectedPrompt,
+      },
       {
         sender: "bot",
         text: promptData.welcome,
@@ -28,15 +33,31 @@ function ChatbotPage({ selectedPrompt, onBack }) {
   return (
     <section className="chatbot-page" id="chatbot">
       <div className="chatbot-shell">
+        <nav className="chatbot-navbar">
+          <div className="nav-logo">Krinal N</div>
+
+          <div className="nav-links">
+            <button type="button" className="nav-link-button" onClick={onBack}>
+              Home
+            </button>
+            <a href="#contact" className="nav-link-anchor">Contact</a>
+
+            <button
+              className="theme-toggle"
+              onClick={() => setDarkMode(!darkMode)}
+              aria-label="Toggle dark mode"
+              type="button"
+            >
+              {darkMode ? <FiSun /> : <FiMoon />}
+            </button>
+          </div>
+        </nav>
+
         <div className="chatbot-header">
           <div>
             <p className="chatbot-kicker">Portfolio AI</p>
             <h2>{selectedPrompt}</h2>
           </div>
-
-          <button type="button" className="back-button" onClick={onBack}>
-            Back to home
-          </button>
         </div>
 
         <div className="chat-window">

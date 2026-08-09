@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { taglines } from "./constants";
+import { taglines, promptOptions } from "./constants";
+import ChatbotPage from "./ChatbotPage";
 
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
@@ -15,6 +16,7 @@ function App() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHoveringLink, setIsHoveringLink] = useState(false);
+  const [selectedPrompt, setSelectedPrompt] = useState(null);
 
   useEffect(() => {
     document.body.classList.toggle("dark", darkMode);
@@ -81,14 +83,13 @@ function App() {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, taglineIndex]);
 
-  const prompts = [
-    "Experience",
-    "Projects",
-    "Skills",
-    "Certifications",
-    "Achievements",
-    "Tell me something fun",
-  ];
+  const handlePromptClick = (prompt) => {
+    setSelectedPrompt(prompt);
+  };
+
+  const resetToHome = () => {
+    setSelectedPrompt(null);
+  };
 
   return (
     <div className="app">
@@ -101,7 +102,16 @@ function App() {
         <div className="cursor-core" />
       </div>
 
-      <nav className="navbar">
+      {selectedPrompt ? (
+        <ChatbotPage
+          selectedPrompt={selectedPrompt}
+          onBack={resetToHome}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+        />
+      ) : (
+        <>
+          <nav className="navbar">
         <div className="nav-logo">Krinal N</div>
 
         <div className="nav-links">
@@ -118,56 +128,62 @@ function App() {
         </div>
       </nav>
 
-      <section className="hero" id="home">
-        <div className="hero-inner hero-layout">
-          <div className="hero-copy">
-            <p className="greeting">Hi There.</p>
+          <section className="hero" id="home">
+            <div className="hero-inner hero-layout">
+              <div className="hero-copy">
+                <p className="greeting">Hi There.</p>
 
-            <h1 className="name">
-              I am <span>Krinal Naghera</span>
-            </h1>
+                <h1 className="name">
+                  I am <span>Krinal Naghera</span>
+                </h1>
 
-            <p className="subtitle">Software Engineer at Telstra</p>
+                <p className="subtitle">Software Engineer at Telstra</p>
 
-            <div className="typing-block" aria-live="polite">
-              <span>{typedText}</span>
-              <span className="cursor" aria-hidden="true"></span>
-            </div>
+                <div className="typing-block" aria-live="polite">
+                  <span>{typedText}</span>
+                  <span className="cursor" aria-hidden="true"></span>
+                </div>
 
-            <p className="subtitle">Find me on:</p>
+                <p className="subtitle">Find me on:</p>
 
-            <div className="socials">
-              <a href="https://github.com/Krinal24" target="_blank" rel="noreferrer" aria-label="GitHub">
-                <FaGithub />
-              </a>
-              <a href="https://linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <FaLinkedin />
-              </a>
-              <a href="https://leetcode.com/u/Kinu2404" target="_blank" rel="noreferrer" aria-label="LeetCode">
-                <SiLeetcode />
-              </a>
-            </div>
-          </div>
+                <div className="socials">
+                  <a href="https://github.com/Krinal24" target="_blank" rel="noreferrer" aria-label="GitHub">
+                    <FaGithub />
+                  </a>
+                  <a href="https://linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <FaLinkedin />
+                  </a>
+                  <a href="https://leetcode.com/u/Kinu2404" target="_blank" rel="noreferrer" aria-label="LeetCode">
+                    <SiLeetcode />
+                  </a>
+                </div>
+              </div>
 
-          <div className="hero-panel">
-            <p className="panel-title">What do you want to learn about me?</p>
+              <div className="hero-panel">
+                <p className="panel-title">What do you want to learn about me?</p>
 
-            <div className="prompt-list">
-              {prompts.map((prompt) => (
-                <button key={prompt} className="prompt-pill" type="button">
-                  {prompt}
+                <div className="prompt-list">
+                  {promptOptions.map((prompt) => (
+                    <button
+                      key={prompt}
+                      className="prompt-pill"
+                      type="button"
+                      onClick={() => handlePromptClick(prompt)}
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+
+                <button type="button" className="connect-card" aria-label="Connect with me">
+                  <span>Connect with me</span>
+                  <span className="connect-arrow">→</span>
                 </button>
-              ))}
+              </div>
             </div>
-
-            <a href="#contact" className="connect-card" aria-label="Connect with me">
-              <span>Connect with me</span>
-              <span className="connect-arrow">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
+          </section>
+        </>
+      )}
     </div>
   );
 }

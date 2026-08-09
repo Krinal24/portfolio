@@ -1,3 +1,16 @@
+export const taglines = [
+  "Burning GPUs, not garlic.",
+  "Cooking data until it confesses.",
+  "In a relationship with hyperparameter tuning.",
+  "Turning coffee into code and code into chaos.",
+  "I speak fluent Python, but my cat prefers Java.",
+  "Debugging life, one neural network at a time.",
+  "I put the 'art' in 'Artificial Intelligence'.",
+  "My code runs faster than my social life.",
+  "I have a love-hate relationship with semicolons.",
+  "I have a PhD in Googling error messages."
+];
+
 export const experiences = [
   {
     company: "Telstra",

@@ -15,103 +15,206 @@ export const experiences = [
   {
     company: "Telstra",
     role: "Associate Software Engineer",
-    duration: "(July 2025 – Present)",
-    domain: "Enterprise Telecom | Network Digitisation",
+    duration: "July 2025 - Present",
+    domain: "Site Reliability Engineering, Observability, and Backend Engineering",
     description:
-      "Providing adaptive network solutions to Enterprise customers to enable customized network solutions.\nDesigning and delivering scalable backend microservices powering enterprise-grade broadband personalization platforms.\nI work extensively on distributed event-driven systems using Kafka and Camunda workflow orchestration.\nImplementing CI/CD pipelines and cloud infrastructure on AWS to ensure high availability and performance of critical services.",
-    skills: ["Java", "Microservices", "Kafka", "Camunda", "Angular", "CI/CD", "Springboot", "AWS", "Docker", "AI Chatbots", "DevOps", "REST APIs"]
+      "Site Reliability Engineering / Observability (January 2026 - Current): Enabled high-availability application scaling and platform optimization on Kubernetes as a Platform Engineer in the B2B Digital Channels space. Led observability standardization across 1000+ applications using OpenTelemetry-based tracing, centralized logging, and metrics pipelines, improving incident detection time by 30-40%. Automated Observability Maturity Assessments across Telstra with Power Automate and Power Apps, reducing manual approval and reminder effort for SRE Admins by 90%.\nBackend Engineering (July 2025 - January 2026): Developed and maintained Java Spring Boot microservices for a Telstra Enterprise client portal, improving scalability and supporting high-volume client customizations. Designed dedicated read/write APIs to reduce direct database dependencies, improve modularity, reduce coupling, and optimize data access performance.",
+    skills: [
+      "Kubernetes",
+      "OpenTelemetry",
+      "New Relic",
+      "Splunk",
+      "Java",
+      "Spring Boot",
+      "Microservices",
+      "REST APIs",
+      "Power Automate",
+      "Power Apps",
+    ],
   },
   {
     company: "MathCo",
     role: "Data Engineer Intern",
-    duration: "(Jan 2025 – July 2025)",
-    domain: "Healthcare Analytics | Data Engineering",
+    duration: "January 2025 - July 2025",
+    domain: "Healthcare Analytics and Data Engineering",
     description:
-      "Improved data reliability of healthcare claims data & increased predictive modelling accuracy by 45% using Business Rules Validation.\nBuilt automated ETL pipelines and predictive analytics solutions for pharmaceutical referral optimization.\nImproved referral alert efficiency, saving $250k annually, boosting operational efficiency in healthcare analytics.",
-    skills: ["Python", "Databricks", "ETL", "PySpark", "Apache Airflow", "Collibra", "Azure DevOps", "Data Pipelines", "SQL", "Medallion Architecture", "CI/CD"]
-  },
-  {
-    company: "NYXify Technologies",
-    role: "AI Intern",
-    duration: "(Mar 2024 – May 2024)",
-    domain: "Generative AI | LLM Systems",
-    description:
-      "Worked on LLM dataset preparation, evaluation benchmarking, and prompt engineering strategies to enhance AI performance.\nImplemented data collection pipelines and evaluation frameworks for LLM performance assessment, improving model accuracy by 20%.\nConducted research on explainable AI techniques and integrated them into existing LLM systems to enhance transparency and user trust.",
-    skills: ["LLMs", "Prompt Engineering", "NLP", "AI Evaluation", "Web Scraping", "APIs", "Explainable AI", "CNNs","Selenium", "Transformers", "BeautifulSoup"]
+      "Improved data reliability and increased accuracy by 45% by building data processing and prediction pipelines. Optimized referral alert processes for a global client, saving $250k annually and boosting operational efficiency in healthcare analytics.",
+    skills: ["Python", "Databricks", "PySpark", "Apache Airflow", "SQL", "Data Engineering Pipelines"],
   },
   {
     company: "Altigreen Propulsion Labs",
     role: "Data Intern",
-    duration: "(Sep 2023 – Oct 2023)",
-    domain: "EV Analytics | Edge Data",
+    duration: "September 2023 - October 2023",
+    domain: "EV Analytics and Predictive Modeling",
     description:
-      "Analyzed million-row datasets with 80+ features of EV telemetry data to improve predictive performance modeling and built dashboards for real-time insights.\nImproved predictive modeling accuracy by 15% through feature engineering and data preprocessing techniques on EV drive analytics.",
-    skills: ["Python", "Machine Learning", "Data Visualization", "Analytics", "SQL", "Pandas", "Matplotlib", "Seaborn", "Predictive Modeling", "EV Drive Analytics"]
-  }
+      "Enhanced predictive model performance and improved accuracy by 15% using AutoGluon. Delivered insights from million-row datasets with more than 80 features through analysis and visualization.",
+    skills: ["Python", "AutoGluon", "Machine Learning", "Data Visualization", "SQL", "Predictive Modeling"],
+  },
 ];
+
+export const education = [
+  {
+    institution: "Liverpool John Moores University",
+    degree: "Master of Science in Machine Learning & AI",
+    duration: "December 2025 - Present",
+    grade: "CGPA: TBD",
+    location: "",
+  },
+  {
+    institution: "Nitte Meenakshi Institute of Technology",
+    degree: "B.E. Computer Science and Engineering",
+    duration: "June 2025",
+    grade: "CGPA: 8.91",
+    location: "Bangalore, India",
+  },
+];
+
+export const skills = {
+  "Site Reliability Engineering / Observability": [
+    "OpenTelemetry",
+    "New Relic",
+    "Splunk",
+    "SLIs/SLOs",
+    "Distributed Tracing",
+  ],
+  Development: [
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "REST APIs",
+    "React",
+    "Next.js",
+    "Python",
+    "PySpark",
+    "Scala",
+  ],
+  "DevOps & Automation": [
+    "Terraform",
+    "GitLab CI/CD",
+    "Docker",
+    "Kubernetes",
+    "Power Automate",
+  ],
+  "Cloud Platforms": ["Google Cloud (GCP)", "AWS"],
+  "Data & Systems": [
+    "SQL",
+    "Databricks",
+    "Apache Airflow",
+    "Data Engineering Pipelines",
+  ],
+  "ML/AI": [
+    "MCP",
+    "TensorFlow",
+    "PyTorch",
+    "MLflow",
+    "Generative AI",
+    "RAG",
+    "LangChain",
+    "Agentic AI",
+  ],
+};
+
+export const projects = [
+  {
+    name: "Customer Churn Prediction Model for Waze App",
+    technologies: ["Machine Learning"],
+    link: "",
+    description:
+      "Built a predictive model to identify potential user churn, achieving 92% accuracy and delivering actionable insights for targeted retention strategies.",
+  },
+  {
+    name: "SmartLearnX",
+    technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
+    link: "",
+    description:
+      "Built a RAG-based AI learning platform using Gemini, LangChain, and vector search. The platform offers personalized learning paths based on user goals and performance and generates customized educational content.",
+  },
+];
+
+export const achievements = [
+  "Completed official training and certifications from Splunk and New Relic in observability, monitoring, and alerting practices.",
+  "Google Advanced Data Analytics Professional Certification from Google Career Certificates on Coursera.",
+  "Amazon ML Summer School 2024 mentee.",
+  "Recipient of the Generation Google Scholarship for Women in Computer Science (APAC) 2023.",
+  "Co-Lead and Content & Documentation Lead of Google Developers Student Club, NMIT.",
+  "Established the NMIT Toastmasters Club and served as President from July to December 2024.",
+];
+
+export const certifications = [
+  "Splunk training and certification in observability, monitoring, and alerting practices",
+  "New Relic training and certification in observability, monitoring, and alerting practices",
+  "Google Advanced Data Analytics Professional Certification (Google Career Certificates, Coursera)",
+];
+
+export const courses = [];
 
 export const chatbotContent = {
   Experience: {
-    welcome: "Here’s a quick snapshot of my experience across software engineering, AI, and data work.",
+    welcome: "Here is a quick overview of my professional experience:\n- Telstra - Associate Software Engineer (July 2025 - Present): SRE, observability, platform engineering, and backend engineering.\n- MathCo - Data Engineer Intern (January 2025 - July 2025): Data processing, prediction pipelines, and healthcare analytics.\n- Altigreen Propulsion Labs - Data Intern (September 2023 - October 2023): Predictive modeling, data analysis, and visualization.",
     responses: {
-      "Elaborate on an experience": "I’ve worked across telecom, healthcare analytics, AI research, and EV data systems. My strongest impact has been building scalable backend systems and improving the reliability of data and product experiences.",
-      "What are your core strengths?": "I bring together software engineering, data-driven thinking, and AI experimentation. I’m especially strong in backend systems, data pipelines, cloud deployment, and turning messy problems into reliable systems.",
-      "Tell me about Telstra": "At Telstra, I work on enterprise telecom solutions and scalable backend microservices that support network personalization. My work focuses on event-driven systems, workflow orchestration, and cloud-native delivery.",
-      "Learn something else": "You can also ask about my projects, skills, certifications, or achievements. I’ve built a mix of engineering, AI, and analytics work across team and independent learning settings."
-    }
+      "Tell me about Telstra": "At Telstra, I work across SRE, observability, platform engineering, and backend engineering. I have enabled high-availability scaling on Kubernetes, standardized observability across 1000+ applications, and built Java Spring Boot microservices for an enterprise client portal.",
+      "What's your current job role?": "I am an Associate Software Engineer at Telstra. My current work focuses on SRE, observability, platform engineering, and high-availability application scaling on Kubernetes in the B2B Digital Channels space.",
+      "Tell me about your work at MathCo": "At MathCo, I worked as a Data Engineer Intern on data processing and prediction pipelines. I improved data reliability and accuracy by 45% and optimized referral alert processes that saved $250k annually.",
+      "What impact have you had?": "I improved incident detection time by 30-40% through OpenTelemetry-based tracing, centralized logging, and metrics pipelines. I also reduced manual Observability Maturity Assessment effort by 90% and helped save $250k annually through healthcare referral alert optimization at MathCo.",
+      "What are your core strengths?": "My strongest areas are reliable backend systems, observability, platform engineering, data pipelines, and applied machine learning. I enjoy connecting technical implementation with measurable operational or business outcomes.",
+      "Learn something else": "You can ask about my projects, skills, education, achievements, or certifications.",
+    },
   },
   Projects: {
-    welcome: "I enjoy building work that mixes product thinking, technical depth, and measurable impact.",
+    welcome: "Here are my projects:\n- Customer Churn Prediction Model for Waze App: A machine learning model that achieved 92% accuracy and supported targeted retention strategies.\n- SmartLearnX: A Gemini and RAG-based learning platform that creates personalized paths and educational content using LangChain and vector search.",
     responses: {
-      "Tell me about your best project": "One of my strongest project experiences involved building data and workflow systems that improved reliability and decision-making. I like working on projects where the outcomes are measurable and the systems scale with real-world use.",
-      "What kind of projects do you enjoy?": "I enjoy product-facing engineering, AI-enabled workflows, and data-heavy systems. The sweet spot is where technical implementation intersects with user outcomes and business value.",
-      "Show me your engineering style": "I like clean architecture, dependable APIs, and iterative delivery. I care about maintainability, observability, and shipping systems that can evolve without becoming fragile.",
-      "Learn something else": "I can also talk about my experience, skills, certifications, achievements, or a fun side of my work and personality."
-    }
+      "Tell me about SmartLearnX": "SmartLearnX is a RAG-based AI learning platform built with Gemini, LangChain, vector search, React, and Node.js. It creates personalized learning paths and customized educational content based on a learner's goals and performance.",
+      "Tell me about your projects": "My projects include SmartLearnX, a Gemini and RAG-based personalized learning platform, and a Waze customer churn prediction model that achieved 92% accuracy and supported targeted retention strategies.",
+      "Tell me about the churn model": "I built a customer churn prediction model for the Waze app that achieved 92% accuracy and produced actionable insights for targeted retention strategies.",
+      "What technologies do you use?": "My projects include Gemini AI, RAG pipelines, LangChain, vector search, React, Node.js, and machine learning workflows.",
+      "Learn something else": "You can ask about my experience, skills, education, achievements, or certifications.",
+    },
   },
   Skills: {
-    welcome: "My skillset sits at the intersection of engineering, AI, and data systems.",
+    welcome: "My skills are organized across these areas:\n- SRE and Observability: OpenTelemetry, New Relic, Splunk, SLIs/SLOs, and distributed tracing.\n- Development: Java, Spring Boot, microservices, REST APIs, React, Next.js, Python, PySpark, and Scala.\n- DevOps and Automation: Terraform, GitLab CI/CD, Docker, Kubernetes, and Power Automate.\n- Cloud: Google Cloud (GCP) and AWS.\n- Data and Systems: SQL, Databricks, Apache Airflow, and data engineering pipelines.\n- ML/AI: MCP, TensorFlow, PyTorch, MLflow, Generative AI, RAG, LangChain, and Agentic AI.",
     responses: {
-      "What are your strongest technical skills?": "My strongest areas include Java, Spring Boot, microservices, Kafka, Camunda, AWS, Python, SQL, and data engineering workflows. I also work across AI/ML experimentation and analytics tooling.",
-      "What do you do well in teams?": "I work well in cross-functional teams because I can go from architecture discussion to implementation and then help validate outcomes with data and metrics. I enjoy ownership and collaboration.",
-      "How do you approach learning?": "I learn by building, debugging, and iterating quickly. I like turning new concepts into small working systems so the learning is concrete and reusable.",
-      "Learn something else": "I can also share my experience story, project examples, certifications, or achievements if you want a broader picture."
-    }
+      "What are your strongest technical skills?": "My strongest technical skills include OpenTelemetry, distributed tracing, Kubernetes, Java, Spring Boot, microservices, REST APIs, Python, PySpark, Databricks, SQL, RAG, LangChain, and cloud platforms including AWS and GCP.",
+      "What skills do you have?": "My skills cover SRE and observability, Java and Spring Boot development, React and Next.js, Python and PySpark, Kubernetes and Terraform, AWS and GCP, data engineering, and ML/AI technologies such as RAG and LangChain.",
+      "What do you know about observability?": "I work with OpenTelemetry, New Relic, Splunk, SLIs/SLOs, distributed tracing, centralized logging, and metrics pipelines. At Telstra, I helped standardize observability across more than 1000 applications.",
+      "What AI technologies do you use?": "My AI toolkit includes MCP, TensorFlow, PyTorch, MLflow, Generative AI, RAG, LangChain, and Agentic AI.",
+      "Learn something else": "You can ask about my experience, projects, education, achievements, or certifications.",
+    },
+  },
+  Education: {
+    welcome: "My academic background includes:\n- Master of Science in Machine Learning & AI, Liverpool John Moores University (December 2025 - Present), CGPA: TBD.\n- B.E. in Computer Science and Engineering, Nitte Meenakshi Institute of Technology (June 2025), CGPA: 8.91, Bangalore, India.",
+    responses: {
+      "What are you studying now?": "I am pursuing a Master of Science in Machine Learning & AI at Liverpool John Moores University, which I started in December 2025.",
+      "Where did you complete your degree?": "I completed my B.E. in Computer Science and Engineering at Nitte Meenakshi Institute of Technology in June 2025 with a CGPA of 8.91.",
+      "What did you study?": "My academic background is in Computer Science and Engineering, followed by postgraduate study focused on Machine Learning and AI.",
+      "Learn something else": "You can ask about my experience, projects, skills, achievements, or certifications.",
+    },
   },
   Certifications: {
-    welcome: "I’ve kept learning close to the work, especially in software engineering, AI, and data.",
+    welcome: "My certifications and professional training include:\n- Splunk training and certification in observability, monitoring, and alerting practices.\n- New Relic training and certification in observability, monitoring, and alerting practices.\n- Google Advanced Data Analytics Professional Certification from Google Career Certificates on Coursera.",
     responses: {
-      "What certifications matter most?": "The most relevant learning for me has been hands-on technical learning in AI, system design, and software engineering. I value practical depth over collecting credentials for appearances.",
-      "How do you keep learning?": "I keep learning by building side projects, exploring latest tooling, and applying concepts in real-world scenarios. That keeps my learning tied to actual engineering challenges.",
-      "What’s your learning philosophy?": "I prefer learning by doing. If I can build or debug something end-to-end, I remember and understand it far better than by reading alone.",
-      "Learn something else": "I can also walk through my experience, projects, or skills depending on what you want to know next."
-    }
+      "What certifications do you have?": "I have completed the Google Advanced Data Analytics Professional Certification and official training and certifications from Splunk and New Relic in observability, monitoring, and alerting practices.",
+      "What is your observability training?": "I completed official Splunk and New Relic training and certifications focused on observability, monitoring, and alerting practices.",
+      "How do you keep learning?": "I combine formal certifications and training with hands-on engineering work in SRE, observability, backend systems, data engineering, and AI projects.",
+      "Learn something else": "You can ask about my experience, projects, skills, education, or achievements.",
+    },
   },
   Achievements: {
-    welcome: "I like outcomes that are tangible, measurable, and meaningful to the people using the system.",
+    welcome: "Some of my achievements include:\n- Completed official Splunk and New Relic training and certifications in observability, monitoring, and alerting.\n- Earned the Google Advanced Data Analytics Professional Certification.\n- Became an Amazon ML Summer School 2024 mentee.\n- Received the Generation Google Scholarship for Women in Computer Science (APAC) in 2023.\n- Served as Co-Lead and Content & Documentation Lead of the Google Developers Student Club at NMIT.\n- Established the NMIT Toastmasters Club and served as President from July to December 2024.",
     responses: {
-      "What are you proud of?": "I’m proud of building reliable systems and data pipelines that improved business performance and helped teams make better decisions. I enjoy work where a technical solution has a visible impact.",
-      "What impact have you had?": "Across roles, I’ve improved data reliability, optimized workflows, and helped deliver systems with stronger performance and better decision support. I care about quality as much as speed.",
-      "What does success look like to you?": "Success looks like a system that is reliable, understandable, and valuable to the people using it. I consider good engineering to be both technical and human-centered.",
-      "Learn something else": "I can also share more about my experience, projects, skills, or certifications."
-    }
+      "What are you proud of?": "I am proud of receiving the Generation Google Scholarship for Women in Computer Science (APAC) in 2023, becoming an Amazon ML Summer School 2024 mentee, and delivering measurable improvements in observability and data engineering.",
+      "What are your achievements?": "My achievements include the Generation Google Scholarship for Women in Computer Science (APAC) 2023, Amazon ML Summer School 2024 mentorship, Google Advanced Data Analytics certification, leadership at the Google Developers Student Club, and founding the NMIT Toastmasters Club.",
+      "Tell me about your leadership": "I served as Co-Lead and Content & Documentation Lead of the Google Developers Student Club at NMIT. I also established the NMIT Toastmasters Club and served as its President from July to December 2024.",
+      "What impact have you made?": "My work has improved incident detection time by 30-40%, reduced Observability Maturity Assessment effort by 90%, improved predictive accuracy by up to 45%, and saved $250k annually through process optimization.",
+      "Learn something else": "You can ask about my experience, projects, skills, education, or certifications.",
+    },
   },
-  "Tell me something fun": {
-    welcome: "Absolutely — here’s a lighter side of my work and personality.",
-    responses: {
-      "Tell me something funny": "I’m the kind of engineer who treats debugging like detective work. Half the time it’s a missing semicolon, and the other half it’s a completely valid bug disguised as a life choice.",
-      "What do you do outside work?": "I enjoy learning new technologies, building side projects, and thinking about how AI can be useful without becoming overhyped. I also appreciate a good technical challenge and a strong coffee break.",
-      "What’s your vibe?": "Curious, fast-moving, and a little chaotic in a productive way. I like building things, learning quickly, and figuring out how to make the next problem easier than the last one.",
-      "Learn something else": "I can also talk about my experience, projects, skills, certifications, or achievements if you want the deeper version."
-    }
-  }
 };
 
 export const promptOptions = [
   "Experience",
   "Projects",
   "Skills",
+  "Education",
   "Certifications",
   "Achievements",
-  "Tell me something fun"
 ];

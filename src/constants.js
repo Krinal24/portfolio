@@ -117,8 +117,9 @@ export const skills = {
 export const projects = [
   {
     name: "Customer Churn Prediction Model for Waze App",
-    technologies: ["Machine Learning"],
+    technologies: ["Machine Learning", "Colab", "Data Analysis"],
     link: "",
+    highlight: "Google Advanced Data Analytics Certification Capstone",
     description:
       "Built a predictive model to identify potential user churn, achieving 92% accuracy and delivering actionable insights for targeted retention strategies.",
   },
@@ -126,6 +127,7 @@ export const projects = [
     name: "SmartLearnX",
     technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
     link: "",
+    highlight: "Top 50 out of 400+ projects - NMIT Hacks Hackathon 2024",
     description:
       "Built a RAG-based AI learning platform using Gemini, LangChain, and vector search. The platform offers personalized learning paths based on user goals and performance and generates customized educational content.",
   },
@@ -144,6 +146,44 @@ export const certifications = [
   "Splunk training and certification in observability, monitoring, and alerting practices",
   "New Relic training and certification in observability, monitoring, and alerting practices",
   "Google Advanced Data Analytics Professional Certification (Google Career Certificates, Coursera)",
+];
+
+export const certificateItems = [
+  {
+    title: "Splunk Observability Training",
+    type: "Certificate",
+    image: "/certificates/splunk-observability.png",
+  },
+  {
+    title: "New Relic Observability Training",
+    type: "Certificate",
+    image: "/certificates/new-relic-observability.png",
+  },
+  {
+    title: "Google Advanced Data Analytics",
+    type: "Certificate",
+    image: "/certificates/google-advanced-data-analytics.png",
+  },
+  {
+    title: "Amazon ML Summer School 2024",
+    type: "Acknowledgement",
+    image: "/certificates/amazon-ml-summer-school.png",
+  },
+  {
+    title: "Generation Google Scholarship APAC 2023",
+    type: "Recognition",
+    image: "/certificates/generation-google-scholarship.png",
+  },
+  {
+    title: "Google Developers Student Club, NMIT",
+    type: "Leadership",
+    image: "/certificates/gdsc-nmit.png",
+  },
+  {
+    title: "NMIT Toastmasters Club",
+    type: "Leadership",
+    image: "/certificates/nmit-toastmasters.png",
+  },
 ];
 
 export const courses = [];
@@ -215,6 +255,5 @@ export const promptOptions = [
   "Projects",
   "Skills",
   "Education",
-  "Certifications",
-  "Achievements",
+  "Certifications & Achievements"
 ];

@@ -4,7 +4,7 @@ import "./App.css";
 import { certificateItems, education, experiences, projects, taglines, promptOptions } from "./constants";
 import ChatbotPage from "./ChatbotPage";
 
-import { FaBook, FaGithub, FaLinkedin, FaSpotify } from "react-icons/fa";
+import { FaBook, FaGithub, FaLinkedin, FaKaggle, FaSpotify } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FiSun, FiMoon } from "react-icons/fi";
 
@@ -61,6 +61,7 @@ function App() {
   const [bugScore, setBugScore] = useState(0);
   const [bugPosition, setBugPosition] = useState({ top: 42, left: 54 });
   const [bugEscaped, setBugEscaped] = useState(false);
+  const [researchMessage, setResearchMessage] = useState("");
   const portfolioContentRef = useRef(null);
   const certificateTrackRef = useRef(null);
   const certificateWheelVelocityRef = useRef(0);
@@ -198,8 +199,8 @@ function App() {
       Projects: "projects",
       Skills: "skills",
       Education: "education",
-      Certifications: "certifications",
-      Achievements: "fun",
+      "Certifications & Achievements": "certifications",
+      "Something fun": "fun",
     };
     const section = document.getElementById(sectionMap[prompt] || "home");
     section?.scrollIntoView({ behavior: "smooth" });
@@ -243,6 +244,13 @@ function App() {
     setBugPosition({ top: 42, left: 54 });
   };
 
+  const handleResearchMessage = (event) => {
+    event.preventDefault();
+    const subject = encodeURIComponent("Research topic suggestion");
+    const body = encodeURIComponent(researchMessage.trim());
+    window.location.href = `mailto:hello@krinalnaghera.dev?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div className="app">
       <div
@@ -268,7 +276,6 @@ function App() {
 
         <div className="nav-links">
           <a href="#home">Home</a>
-          <a href="#contact">Contact</a>
 
           <button
             className="theme-toggle"
@@ -280,60 +287,78 @@ function App() {
         </div>
       </nav>
 
-          <section className="hero" id="home">
-            <div className="hero-inner hero-layout">
-              <div className="hero-copy">
-                <p className="greeting">Hi There.</p>
+<section className="hero" id="home">
+  <div className="hero-inner hero-layout">
+    <div className="hero-copy">
+      <p className="greeting">Hi There.</p>
 
-                <h1 className="name">
-                  I am <span>Krinal Naghera</span>
-                </h1>
+      <h1 className="name">
+        I am <span>Krinal Naghera</span>
+      </h1>
 
-                <p className="subtitle">Software Engineer at Telstra</p>
+      <p className="subtitle">Software Engineer at Telstra</p>
 
-                <div className="typing-block" aria-live="polite">
-                  <span>{typedText}</span>
-                  <span className="cursor" aria-hidden="true"></span>
-                </div>
+      <div className="typing-block" aria-live="polite">
+        <span>{typedText}</span>
+        <span className="cursor" aria-hidden="true"></span>
+      </div>
 
-                <p className="subtitle">Find me on:</p>
+      <p className="subtitle">Find me on:</p>
 
-                <div className="socials">
-                  <a href="https://github.com/Krinal24" target="_blank" rel="noreferrer" aria-label="GitHub">
-                    <FaGithub />
-                  </a>
-                  <a href="https://linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                    <FaLinkedin />
-                  </a>
-                  <a href="https://leetcode.com/u/Kinu2404" target="_blank" rel="noreferrer" aria-label="LeetCode">
-                    <SiLeetcode />
-                  </a>
-                </div>
-              </div>
+      <div className="socials">
+        <a href="https://github.com/Krinal24" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <FaGithub />
+        </a>
+        <a href="https://linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <FaLinkedin />
+        </a>
+        <a href="https://leetcode.com/u/Kinu2404" target="_blank" rel="noreferrer" aria-label="LeetCode">
+          <SiLeetcode />
+        </a>
+        <a href="https://www.kaggle.com/krinalnaghera" target="_blank" rel="noreferrer" aria-label="Kaggle">
+          <FaKaggle />
+        </a>
+      </div>
+    </div>
 
-              <div className="hero-panel">
-                <p className="panel-title">What do you want to learn about me?</p>
+    <div className="hero-side">
+      <div className="hero-photo-wrap">
+        <img
+          src="/Krinal_Naghera.jpeg"
+          alt="Krinal Naghera"
+          className="hero-photo"
+        />
+      </div>
 
-                <div className="prompt-list">
-                  {promptOptions.map((prompt) => (
-                    <button
-                      key={prompt}
-                      className="prompt-pill"
-                      type="button"
-                      onClick={() => handlePromptClick(prompt)}
-                    >
-                      {prompt}
-                    </button>
-                  ))}
-                </div>
+      <div className="hero-panel">
+        <p className="panel-title">What do you want to learn about me?</p>
 
-                <button type="button" className="connect-card" aria-label="Connect with me">
-                  <span>Connect with me</span>
-                  <span className="connect-arrow">→</span>
-                </button>
-              </div>
-            </div>
-          </section>
+        <div className="prompt-list">
+          {promptOptions.map((prompt) => (
+            <button
+              key={prompt}
+              className="prompt-pill"
+              type="button"
+              onClick={() => handlePromptClick(prompt)}
+            >
+              {prompt}
+            </button>
+          ))}
+        </div>
+
+        
+      </div>
+      <div className="hero-side">
+        <button type="button" className="connect-card" aria-label="Connect with me"
+          onClick={() => handlePromptClick("Something fun")}
+        >
+          <span>Connect with me</span>
+          <span className="connect-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
           <main className="portfolio-content" ref={portfolioContentRef}>
             <section className="portfolio-section experience-section" id="experience">
@@ -374,7 +399,7 @@ function App() {
               <div className="section-heading projects-heading">
                 <div>
                   <p className="section-kicker">Selected work</p>
-                  <h2>Projects</h2>
+                  <h2>Projects & Publications</h2>
                 </div>
                 <p className="section-intro">
                   Small, focused systems where machine learning meets thoughtful product experiences.
@@ -391,6 +416,11 @@ function App() {
                     <h3>{project.name}</h3>
                     {project.highlight && <p className="project-highlight">{project.highlight}</p>}
                     <p>{project.description}</p>
+                    {project.demoLink && (
+                      <a href={project.demoLink} target="_blank" rel="noreferrer">
+                        Watch demo on YouTube <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
                     <div className="project-footer">
                       <div className="skill-tags">
                         {project.technologies.map((technology) => <span key={technology}>{technology}</span>)}
@@ -555,31 +585,70 @@ function App() {
               </div>
 
               <div className="fun-grid">
-                <article className="fun-card ama-card">
-                  <span className="fun-card-label">01 / AMA</span>
-                  <h3>Ask me anything.</h3>
-                  <p>Want to talk about engineering, AI, learning, or build a project in AI, ML or Data with me? Send me a note or reach out on LinkedIn.</p>
-                  <div className="fun-links">
-                    <a href="mailto:hello@krinalnaghera.dev">Email me <span aria-hidden="true">↗</span></a>
-                    <a href="https://www.linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer">DM on LinkedIn <span aria-hidden="true">↗</span></a>
-                  </div>
-                </article>
-
-                <article className="fun-card culture-card">
-                  <span className="fun-card-label">02 / Currently into</span>
-                  <div className="fun-item">
-                    <span className="fun-symbol spotify-symbol" aria-hidden="true"><FaSpotify /></span>
-                    <div>
-                      <span>Favourite song</span>
-                      <a href="https://open.spotify.com/track/35KiiILklye1JRRctaLUb4" target="_blank" rel="noreferrer">Holocene · Bon Iver ↗</a>
+                <div className="fun-column">
+                  <article className="fun-card ama-card">
+                    <span className="fun-card-label">01 / AMA</span>
+                    <h3>Ask me anything.</h3>
+                    <p>Want to talk about engineering, AI, learning, or build a project in AI, ML or Data with me? Send me a note or reach out on LinkedIn.</p>
+                    <div className="fun-links">
+                      <a href="mailto:hello@krinalnaghera.dev">Email me <span aria-hidden="true">↗</span></a>
+                      <a href="https://www.linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer">DM on LinkedIn <span aria-hidden="true">↗</span></a>
                     </div>
-                  </div>
-                  <div className="fun-item quote-item">
+                  </article>
+
+                  <article className="fun-card culture-card playlist-card">
+                    <span className="fun-card-label">02 / Currently into</span>
+                    <div className="fun-item spotify-heading">
+                      <span className="fun-symbol spotify-symbol" aria-hidden="true"><FaSpotify /></span>
+                      <div>
+                        <span>What's on my mind (&amp; playing on loop)</span>
+                        <a href="https://open.spotify.com/track/60SvhHtwefT0e2G7i7kOH3" target="_blank" rel="noreferrer">New Gold · Tame Impala, Gorillaz ↗</a>
+                      </div>
+                    </div>
+                    <div className="spotify-playlist-heading">
+                      <strong>Vibe as you scroll</strong>
+                      <span>Spotify playlist</span>
+                    </div>
+                    <div className="spotify-embed-wrap">
+                      <iframe
+                        title="Spotify playlist"
+                        src="https://open.spotify.com/embed/playlist/6C31tC65ZJBawgWwSjROgh?utm_source=generator&si=7f805cef7ac64835"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      />
+                    </div>
+                  </article>
+                </div>
+
+                <article className="fun-card culture-card research-card">
+                  <span className="fun-card-label">03 / Currently working on</span>
+                  <div className="research-intro">
                     <span className="fun-symbol book-symbol" aria-hidden="true"><FaBook /></span>
                     <div>
-                      <span>Favourite quote</span>
-                      <blockquote>“And now that you don’t have to be perfect, you can be good.”</blockquote>
-                      <cite>East of Eden · John Steinbeck</cite>
+                      <h3>Learning in public.</h3>
+                      <p>I’m doing my Master’s online in AI & ML, exploring research papers, and learning something new every day.</p>
+                    </div>
+                  </div>
+                  <p className="research-invite">Have a research topic to share? Shoot!</p>
+                  <div className="research-form">
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLScoHUkAQnbwSVi6qxjqv7VioAOAh_1V46Jqkm8Ra4gPaA_8Cw/viewform?embedded=true"
+    width="100%"
+    height="419"
+    frameBorder="0"
+    marginHeight="0"
+    marginWidth="0"
+    title="Research topic suggestion form"
+  >
+    Loading…
+  </iframe>
+</div>
+                  <div className="fun-item quote-item research-quote">
+                    <span className="fun-symbol book-symbol" aria-hidden="true"><FaBook /></span>
+                    <div>
+                      <span>Life motto ft. great reads</span>
+                      <blockquote>“I was beginning to learn that your life is a story told about you, not one that you tell.”</blockquote>
+                      <cite>Turtles all the way down · John Green</cite>
                     </div>
                   </div>
                 </article>
@@ -590,7 +659,7 @@ function App() {
                     <span className="bug-score">Bugs caught: {bugScore}</span>
                   </div>
                   <h3>Catch the bug.</h3>
-                  <p>It escaped code review and is now hiding somewhere in this tiny production environment. Click it before it asks for a promotion.</p>
+                  <p>It escaped code review, let's see if you can catch it now. Click it before it asks for a promotion.</p>
                   <div className="bug-arena" aria-label="Mini game: catch the bug" onMouseMove={handleBugArenaMove}>
                     <button
                       className="bug-target"

@@ -164,6 +164,29 @@ body::before {
   backdrop-filter: blur(8px);
 }
 
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.hero-photo-wrap {
+  width: 190px;
+  height: 190px;
+  overflow: hidden;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .panel-title {
   margin: 0 0 18px;
   font-size: clamp(1.2rem, 1.8vw, 1.9rem);
@@ -571,7 +594,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 10px;
 }
 
 .project-index {
@@ -1010,7 +1033,7 @@ body::before {
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 0 0 286px;
+  flex: 0 0 350px;
   min-height: 302px;
   padding: 12px;
   border: 1px solid rgba(148, 163, 184, 0.25);
@@ -1143,12 +1166,21 @@ body::before {
   z-index: 1;
   width: 38px;
   height: 38px;
-  border: 1px solid rgba(17, 24, 39, 0.16);
-  border-radius: 50%;
   background: rgba(248, 250, 252, 0.9);
   color: #111827;
   font-size: 1.5rem;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.certificate-modal-close:hover {
+  background: rgba(241, 245, 249, 1);
 }
 
 .education-section {
@@ -1212,6 +1244,11 @@ body::before {
   padding-top: 52px;
 }
 
+.fun-column {
+  display: grid;
+  gap: 18px;
+}
+
 .fun-card {
   min-height: 360px;
   padding: 32px;
@@ -1226,6 +1263,105 @@ body::before {
 
 .culture-card {
   background: linear-gradient(145deg, rgba(238, 232, 255, 0.55), rgba(255, 255, 255, 0.52));
+}
+
+.quote-card {
+  min-height: 100%;
+}
+
+.quote-card .quote-item {
+  margin-top: 78px;
+}
+
+.research-card {
+  min-height: 100%;
+}
+
+.research-card .research-intro h3 {
+  margin: 0 0 14px;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+}
+
+.research-intro {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-top: 76px;
+}
+
+.research-intro h3 {
+  margin: 0 0 14px;
+  color: #111827;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+}
+
+.research-intro p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.research-invite {
+  margin: 34px 0 18px;
+  color: #f59e0b;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.research-form {
+  display: grid;
+  gap: 10px;
+}
+
+.research-form label {
+  color: #6b7280;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.research-form textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 76px;
+  padding: 12px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.58);
+  color: #111827;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.research-form textarea:focus {
+  border-color: rgba(245, 158, 11, 0.7);
+  outline: 2px solid rgba(245, 158, 11, 0.16);
+}
+
+.research-form button {
+  justify-self: start;
+  padding: 10px 14px;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  border-radius: 999px;
+  background: #facc15;
+  color: #111827;
+  font: inherit;
+  font-weight: 800;
+}
+
+.research-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.research-quote {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(148, 163, 184, 0.24);
 }
 
 .fun-card-label {
@@ -1296,6 +1432,70 @@ body::before {
 
 .spotify-symbol {
   color: #1db954;
+}
+
+.spotify-heading {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-top: 34px;
+}
+
+.spotify-heading > div > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #6b7280;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.spotify-heading strong {
+  color: #111827;
+  font-size: 1.15rem;
+}
+
+.spotify-playlist-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 26px 0 12px;
+  padding: 0 2px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.24);
+}
+
+.spotify-playlist-heading strong {
+  color: #111827;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.spotify-playlist-heading span {
+  color: #6b7280;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.spotify-embed-wrap {
+  margin-top: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #121212;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16);
+}
+
+.spotify-embed-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 352px;
+  border: 0;
 }
 
 .book-symbol {
@@ -1648,6 +1848,38 @@ body.dark .quote-item blockquote {
   color: #f8fafc;
 }
 
+body.dark .research-intro h3 {
+  color: #f8fafc;
+}
+
+body.dark .research-intro p,
+body.dark .research-form label {
+  color: #cbd5e1;
+}
+
+body.dark .research-form textarea {
+  border-color: rgba(148, 163, 184, 0.24);
+  background: rgba(15, 23, 42, 0.68);
+  color: #f8fafc;
+}
+
+body.dark .spotify-heading strong {
+  color: #f8fafc;
+}
+
+body.dark .spotify-heading > div > span {
+  color: #cbd5e1;
+}
+
+body.dark .spotify-playlist-heading {
+  border-bottom-color: rgba(148, 163, 184, 0.24);
+}
+
+body.dark .spotify-playlist-heading strong,
+body.dark .spotify-playlist-heading span {
+  color: #e2e8f0;
+}
+
 body.dark .bug-card {
   background:
     linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(168, 85, 247, 0.09)),
@@ -1776,6 +2008,18 @@ body.dark .certificate-open {
   .education-item,
   .fun-card {
     min-height: auto;
+  }
+
+  .quote-card .quote-item {
+    margin-top: 48px;
+  }
+
+  .research-intro {
+    margin-top: 48px;
+  }
+
+  .spotify-embed-wrap iframe {
+    min-height: 352px;
   }
 
   .bug-card {

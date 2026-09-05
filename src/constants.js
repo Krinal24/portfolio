@@ -63,7 +63,7 @@ export const education = [
   {
     institution: "Nitte Meenakshi Institute of Technology",
     degree: "B.E. Computer Science and Engineering",
-    duration: "June 2025",
+    duration: "2021 - 2025",
     grade: "CGPA: 8.91",
     location: "Bangalore, India",
   },
@@ -116,21 +116,38 @@ export const skills = {
 
 export const projects = [
   {
+    name: "SmartLearnX",
+    technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
+    link: "https://github.com/Krinal24/SmartLearnX",
+    demoLink: "https://www.youtube.com/watch?v=XzNutW_hQdQ",
+    highlight: "Top 40 out of 400+ projects - NMIT Hacks Hackathon 2024.",
+    description:
+      "A RAG-based personalized AI course generator web-application using Gemini, LangChain, and vector search. The platform offers personalized learning paths based on user goals and performance and generates customized educational content.",
+  },
+  {
+    name: "Credit Risk Assessment using Ensemble Models & XAI",
+    technologies: ["Explainable AI", "Financial Data Systems", "Ensemble Modelling", "AutoGluon"],
+    link: "https://ieeexplore.ieee.org/abstract/document/10914916",
+    highlight: "Published in IEEE Xplore - 2025 3rd International Conference on Intelligent Data Communication Technologies and Internet of Things (IDCIoT)",
+    description:
+      "A research that brings CatBoost, XGBoost and LightGBM into an ensemble to improve the prospect of identifying high-risk borrowers for a credit risk assessment dataset using Explainable AI to justify model decisions.",
+  },
+  {
     name: "Customer Churn Prediction Model for Waze App",
     technologies: ["Machine Learning", "Colab", "Data Analysis"],
-    link: "",
+    link: "https://github.com/Krinal24/Google-Data-Analytics",
     highlight: "Google Advanced Data Analytics Certification Capstone",
     description:
       "Built a predictive model to identify potential user churn, achieving 92% accuracy and delivering actionable insights for targeted retention strategies.",
   },
   {
-    name: "SmartLearnX",
-    technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
-    link: "",
-    highlight: "Top 50 out of 400+ projects - NMIT Hacks Hackathon 2024",
+    name: "Curvetopia - Adobe Gensolve (with GFG)",
+    technologies: ["Computer Vision", "Regularization", "Bezier Curves", "OpenCV", "Image segmentation and contour analysis", "SVGs"],
+    link: "https://github.com/Krinal24/Adobe_Gensolv",
+    highlight: "A challenge for the top 5 percentile of Adobe Gensolve Hackathon Round 1 2024",
     description:
-      "Built a RAG-based AI learning platform using Gemini, LangChain, and vector search. The platform offers personalized learning paths based on user goals and performance and generates customized educational content.",
-  },
+      "Identified, regularized and beautified curves in 2D Euclidean space (fitting bezier curves on symmetric segments), by building an algorithm for Symmetry, Regularization & Curve Completion techniques",
+  }
 ];
 
 export const achievements = [
@@ -150,14 +167,14 @@ export const certifications = [
 
 export const certificateItems = [
   {
-    title: "Splunk Observability Training",
+    title: "IBM Data Science Foundations Level 2",
     type: "Certificate",
-    image: "/certificates/splunk-observability.png",
+    image: "/certificates/ibm-ds-foundations.png",
   },
   {
-    title: "New Relic Observability Training",
+    title: "Tensorflow Developer: Zero to Mastery",
     type: "Certificate",
-    image: "/certificates/new-relic-observability.png",
+    image: "/certificates/tensorflow-developer-mastery.png",
   },
   {
     title: "Google Advanced Data Analytics",
@@ -165,14 +182,24 @@ export const certificateItems = [
     image: "/certificates/google-advanced-data-analytics.png",
   },
   {
-    title: "Amazon ML Summer School 2024",
-    type: "Acknowledgement",
-    image: "/certificates/amazon-ml-summer-school.png",
+    title: "Google Cloud Gen AI Academy",
+    type: "Certificate",
+    image: "/certificates/gen-ai-academy.png",
   },
   {
     title: "Generation Google Scholarship APAC 2023",
     type: "Recognition",
     image: "/certificates/generation-google-scholarship.png",
+  },
+  {
+    title: "Amazon ML Summer School 2024",
+    type: "Recognition",
+    image: "/certificates/amazon-ml-summer-school.png",
+  },
+  {
+    title: "Adobe Gensolve Challenge",
+    type: "Recognition",
+    image: "/certificates/adobe-gensolv.png",
   },
   {
     title: "Google Developers Student Club, NMIT",
@@ -182,8 +209,13 @@ export const certificateItems = [
   {
     title: "NMIT Toastmasters Club",
     type: "Leadership",
-    image: "/certificates/nmit-toastmasters.png",
+    image: "/certificates/leader-award.png",
   },
+  {
+    title: "Toastmasters International (District 92, 2024)",
+    type: "Leadership",
+    image: "/certificates/triple-crown-award.png",
+  }
 ];
 
 export const courses = [];
@@ -255,5 +287,6 @@ export const promptOptions = [
   "Projects",
   "Skills",
   "Education",
-  "Certifications & Achievements"
+  "Certifications & Achievements",
+  "Something fun"
 ];

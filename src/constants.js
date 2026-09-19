@@ -119,7 +119,7 @@ export const projects = [
     name: "SmartLearnX",
     technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
     link: "https://github.com/Krinal24/SmartLearnX",
-    demoLink: "https://www.youtube.com/watch?v=XzNutW_hQdQ",
+    demoLink: "https://youtu.be/OOuz4ZIQsRQ",
     highlight: "Top 40 out of 400+ projects - NMIT Hacks Hackathon 2024.",
     description:
       "A RAG-based personalized AI course generator web-application using Gemini, LangChain, and vector search. The platform offers personalized learning paths based on user goals and performance and generates customized educational content.",

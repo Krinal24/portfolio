@@ -62,7 +62,6 @@ function App() {
   const [bugScore, setBugScore] = useState(0);
   const [bugPosition, setBugPosition] = useState({ top: 42, left: 54 });
   const [bugEscaped, setBugEscaped] = useState(false);
-  const [researchMessage, setResearchMessage] = useState("");
   const portfolioContentRef = useRef(null);
   const certificateTrackRef = useRef(null);
   const certificateWheelVelocityRef = useRef(0);
@@ -101,7 +100,8 @@ function App() {
 
   useEffect(() => {
     const currentTagline = taglines[taglineIndex];
-    const typingSpeed = isDeleting ? 25 : 55;
+    const isFullyTyped = !isDeleting && charIndex === currentTagline.length;
+    const typingSpeed = isFullyTyped ? 1400 : isDeleting ? 25 : 55;
 
     const timeout = setTimeout(() => {
       if (!isDeleting && charIndex < currentTagline.length) {
@@ -112,7 +112,7 @@ function App() {
       }
 
       if (!isDeleting && charIndex === currentTagline.length) {
-        setTimeout(() => setIsDeleting(true), 900);
+        setIsDeleting(true);
         return;
       }
 
@@ -243,13 +243,6 @@ function App() {
     setBugScore(0);
     setBugEscaped(false);
     setBugPosition({ top: 42, left: 54 });
-  };
-
-  const handleResearchMessage = (event) => {
-    event.preventDefault();
-    const subject = encodeURIComponent("Research topic suggestion");
-    const body = encodeURIComponent(researchMessage.trim());
-    window.location.href = `mailto:hello@krinalnaghera.dev?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -412,7 +405,7 @@ function App() {
                   <article className={`project-card project-card-${index + 1} scroll-reveal`} key={project.name}>
                     <div className="project-card-topline">
                       <span className="project-index">0{index + 1}</span>
-                      <span className="project-type">AI & ML</span>
+                      <span className="project-type">{project.category}</span>
                     </div>
                     <h3>{project.name}</h3>
                     {project.highlight && <p className="project-highlight">{project.highlight}</p>}
@@ -656,7 +649,7 @@ function App() {
 
                 <article className="fun-card bug-card">
                   <div className="bug-card-heading">
-                    <span className="fun-card-label">03 / Production incident</span>
+                    <span className="fun-card-label">04 / Production incident</span>
                     <span className="bug-score">Bugs caught: {bugScore}</span>
                   </div>
                   <h3>Catch the bug.</h3>
@@ -671,11 +664,13 @@ function App() {
                     >
                       <span aria-hidden="true">🐛</span>
                     </button>
-                    <span className="bug-status">
+                  </div>
+                  <div className="bug-footer">
+                    <button className="bug-reset" type="button" onClick={resetBugGame}>Reset incident</button>
+                    <span className="bug-status" aria-live="polite">
                       {bugEscaped ? "The bug filed a remote-work request." : bugScore > 4 ? "Senior bug hunter unlocked." : "Status: suspiciously operational"}
                     </span>
                   </div>
-                  <button className="bug-reset" type="button" onClick={resetBugGame}>Reset incident</button>
                 </article>
               </div>
             </section>

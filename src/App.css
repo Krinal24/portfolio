@@ -343,7 +343,7 @@ body::before {
 
 .section-heading {
   display: grid;
-  grid-template-columns: minmax(280px, 0.8fr) minmax(300px, 1fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.85fr);
   align-items: end;
   gap: 80px;
   padding-bottom: 52px;
@@ -1586,17 +1586,22 @@ body::before {
   transform: translate(-50%, -50%) rotate(8deg) scale(1.15);
 }
 
+.bug-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
 .bug-status {
-  position: absolute;
-  right: 14px;
-  bottom: 12px;
   color: #6b7280;
   font-size: 0.76rem;
   font-weight: 800;
 }
 
 .bug-reset {
-  margin-top: 14px;
   padding: 8px 12px;
   border: 1px solid rgba(148, 163, 184, 0.35);
   border-radius: 999px;

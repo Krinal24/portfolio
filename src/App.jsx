@@ -5,7 +5,7 @@ import "./App.css";
 import { certificateItems, education, experiences, projects, taglines, promptOptions } from "./constants";
 import ChatbotPage from "./ChatbotPage";
 
-import { FaBook, FaGithub, FaLinkedin, FaKaggle, FaSpotify } from "react-icons/fa";
+import { FaBook, FaGithub, FaLinkedin, FaKaggle, FaSpotify, FaYoutube } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FiSun, FiMoon } from "react-icons/fi";
 
@@ -379,7 +379,21 @@ function App() {
                       </div>
                       <h3>{experience.role}</h3>
                       <p className="experience-company">{experience.company}</p>
-                      <p className="experience-description">{experience.description}</p>
+                      <div className="experience-roles">
+                        {experience.roles.map((role) => (
+                          <div className="experience-role" key={role.title || experience.company}>
+                            {role.title && (
+                              <p className="experience-role-title">
+                                {role.title}
+                                <span>{role.period}</span>
+                              </p>
+                            )}
+                            <ul>
+                              {role.points.map((point) => <li key={point}>{highlightMetrics(point)}</li>)}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
                       <div className="skill-tags">
                         {experience.skills.map((skill) => <span key={skill}>{skill}</span>)}
                       </div>
@@ -411,8 +425,8 @@ function App() {
                     {project.highlight && <p className="project-highlight">{project.highlight}</p>}
                     <p>{project.description}</p>
                     {project.demoLink && (
-                      <a href={project.demoLink} target="_blank" rel="noreferrer">
-                        Watch demo on YouTube <span aria-hidden="true">↗</span>
+                      <a className="project-demo-link" href={project.demoLink} target="_blank" rel="noreferrer">
+                        <FaYoutube aria-hidden="true" /> Watch the demo
                       </a>
                     )}
                     <div className="project-footer">
@@ -680,6 +694,13 @@ function App() {
       <Analytics />
     </div>
   );
+}
+
+// Wraps figures like "1000+", "30-40%" or "$250k" in <strong> so impact numbers stand out.
+function highlightMetrics(text) {
+  return text.split(/(\$?\d[\d,.]*(?:-\d+)?(?:%|k\b|\+))/g).map((part, index) => (
+    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+  ));
 }
 
 function handleSkillCloudMove(event) {

@@ -17,8 +17,25 @@ export const experiences = [
     role: "Associate Software Engineer",
     duration: "July 2025 - Present",
     domain: "Site Reliability Engineering, Observability, and Backend Engineering",
-    description:
-      "Site Reliability Engineering / Observability (January 2026 - Current): Enabled high-availability application scaling and platform optimization on Kubernetes as a Platform Engineer in the B2B Digital Channels space. Led observability standardization across 1000+ applications using OpenTelemetry-based tracing, centralized logging, and metrics pipelines, improving incident detection time by 30-40%. Automated Observability Maturity Assessments across Telstra with Power Automate and Power Apps, reducing manual approval and reminder effort for SRE Admins by 90%.\nBackend Engineering (July 2025 - January 2026): Developed and maintained Java Spring Boot microservices for a Telstra Enterprise client portal, improving scalability and supporting high-volume client customizations. Designed dedicated read/write APIs to reduce direct database dependencies, improve modularity, reduce coupling, and optimize data access performance.",
+    roles: [
+      {
+        title: "Site Reliability Engineering / Observability",
+        period: "January 2026 - Present",
+        points: [
+          "Led observability standardization across 1000+ applications with OpenTelemetry-based tracing, centralized logging and metrics pipelines, improving incident detection time by 30-40%.",
+          "Enabled high-availability application scaling and platform optimization on Kubernetes as a Platform Engineer in the B2B Digital Channels space.",
+          "Automated Observability Maturity Assessments across Telstra with Power Automate and Power Apps, cutting manual approval and reminder effort for SRE Admins by 90%.",
+        ],
+      },
+      {
+        title: "Backend Engineering",
+        period: "July 2025 - January 2026",
+        points: [
+          "Developed and maintained Java Spring Boot microservices for a Telstra Enterprise client portal, improving scalability and supporting high-volume client customizations.",
+          "Designed dedicated read/write APIs that reduced direct database dependencies and coupling, improving modularity and data access performance.",
+        ],
+      },
+    ],
     skills: [
       "Kubernetes",
       "OpenTelemetry",
@@ -37,8 +54,14 @@ export const experiences = [
     role: "Data Engineer Intern",
     duration: "January 2025 - July 2025",
     domain: "Healthcare Analytics and Data Engineering",
-    description:
-      "Improved data reliability and increased accuracy by 45% by building data processing and prediction pipelines. Optimized referral alert processes for a global client, saving $250k annually and boosting operational efficiency in healthcare analytics.",
+    roles: [
+      {
+        points: [
+          "Built data processing and prediction pipelines that improved data reliability and increased accuracy by 45%.",
+          "Optimized referral alert processes for a global healthcare client, saving $250k annually and boosting operational efficiency.",
+        ],
+      },
+    ],
     skills: ["Python", "Databricks", "PySpark", "Apache Airflow", "SQL", "Data Engineering Pipelines"],
   },
   {
@@ -46,8 +69,14 @@ export const experiences = [
     role: "Data Intern",
     duration: "September 2023 - October 2023",
     domain: "EV Analytics and Predictive Modeling",
-    description:
-      "Enhanced predictive model performance and improved accuracy by 15% using AutoGluon. Delivered insights from million-row datasets with more than 80 features through analysis and visualization.",
+    roles: [
+      {
+        points: [
+          "Enhanced predictive model performance with AutoGluon, improving accuracy by 15%.",
+          "Delivered insights from million-row datasets with 80+ features through analysis and visualization.",
+        ],
+      },
+    ],
     skills: ["Python", "AutoGluon", "Machine Learning", "Data Visualization", "SQL", "Predictive Modeling"],
   },
 ];

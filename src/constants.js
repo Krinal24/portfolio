@@ -332,3 +332,43 @@ export const impactStats = [
   { prefix: "$", value: 250, suffix: "k", label: "saved a year by optimizing referral alerts", source: "MathCo" },
   { display: "IEEE", label: "published research on explainable credit-risk models", source: "IDCIoT 2025" },
 ];
+
+// Skills grouped into "lanes" for the Capability map, each with a proof point from real work.
+export const capabilityLanes = {
+  "Reliable Systems": {
+    eyebrow: "Production-minded engineering",
+    description: "I make complex platforms easier to scale, operate, and understand when things get noisy.",
+    proof: "1000+ applications brought into a more consistent observability practice at Telstra, with incident detection improved by 30-40%.",
+    skills: ["OpenTelemetry", "New Relic", "Splunk", "SLIs/SLOs", "Distributed Tracing", "Kubernetes", "Terraform", "GitLab CI/CD", "Docker", "Google Cloud (GCP)", "AWS"],
+  },
+  "Intelligent Products": {
+    eyebrow: "AI with a job to do",
+    description: "I connect machine learning and retrieval systems to experiences that help people learn or decide.",
+    proof: "SmartLearnX combines Gemini, RAG pipelines, LangChain, and vector search.",
+    skills: ["MCP", "TensorFlow", "PyTorch", "MLflow", "Generative AI", "RAG", "LangChain", "Agentic AI"],
+  },
+  "Data in Motion": {
+    eyebrow: "From raw data to signal",
+    description: "I turn large, messy datasets into pipelines, predictions, and decisions teams can use.",
+    proof: "Improved data accuracy by 45% at MathCo and predictive accuracy by 15% at Altigreen.",
+    skills: ["Python", "PySpark", "Scala", "SQL", "Databricks", "Apache Airflow", "Data Engineering Pipelines"],
+  },
+  "Code & Architecture": {
+    eyebrow: "Backend systems with structure",
+    description: "I design maintainable services and APIs that reduce coupling while keeping room for the next feature.",
+    proof: "Built Java Spring Boot microservices and dedicated read/write APIs for a Telstra Enterprise client portal.",
+    skills: ["Java", "Spring Boot", "Microservices", "REST APIs", "Power Automate"],
+  },
+  "Product Experiences": {
+    eyebrow: "Interfaces that make systems useful",
+    description: "I bring engineering depth into the product surface, from responsive interfaces to AI-powered learning flows.",
+    proof: "SmartLearnX turns retrieval pipelines into personalized learning paths and customized educational content.",
+    skills: ["React", "Next.js"],
+  },
+  "Communication & Leadership": {
+    eyebrow: "Technical work is also people work",
+    description: "I communicate clearly, document thoughtfully, and create communities where people can learn and contribute.",
+    proof: "Led clubs and served in Toastmasters International, including establishing NMIT Toastmasters Club and serving as President from July to December 2024.",
+    skills: ["Technical Communication", "Content & Documentation", "Community Leadership", "Public Speaking", "Club Leadership"],
+  },
+};

@@ -16,28 +16,36 @@ export const experiences = [
     company: "Telstra",
     role: "Associate Software Engineer",
     duration: "July 2025 - Present",
-    domain: "Site Reliability Engineering, Observability, and Backend Engineering",
+    domain: "Platform Engineering, Site Reliability, Observability, and Backend Engineering",
     roles: [
       {
-        title: "Site Reliability Engineering / Observability",
-        period: "January 2026 - Present",
+        title: "Platform Engineer",
+        period: "July 2026 - Present",
         points: [
-          "Led observability standardization across 1000+ applications with OpenTelemetry-based tracing, centralized logging and metrics pipelines, improving incident detection time by 30-40%.",
-          "Enabled high-availability application scaling and platform optimization on Kubernetes as a Platform Engineer in the B2B Digital Channels space.",
-          "Automated Observability Maturity Assessments across Telstra with Power Automate and Power Apps, cutting manual approval and reminder effort for SRE Admins by 90%.",
+          "Enabled high-availability app scaling and platform optimization on Kubernetes as a Platform Engineer in the B2B Digital Channels space.",
+          "Optimized version control by introducing effective CI/CD best practices across various applications.",
         ],
       },
       {
-        title: "Backend Engineering",
+        title: "Site Reliability Engineer / Observability",
+        period: "January 2026 - June 2026",
+        points: [
+          "Led observability standardization across 1000+ applications, implementing OpenTelemetry-based tracing, centralized logging and metrics pipelines, improving incident detection time by 30-40%.",
+          "Automated Observability Maturity Assessments across Telstra with Power Automate and Power Apps, reducing manual approval and reminder effort for SRE Admins by 90%.",
+        ],
+      },
+      {
+        title: "Backend Engineer",
         period: "July 2025 - January 2026",
         points: [
-          "Developed and maintained Java Spring Boot microservices for a Telstra Enterprise client portal, improving scalability and supporting high-volume client customizations.",
-          "Designed dedicated read/write APIs that reduced direct database dependencies and coupling, improving modularity and data access performance.",
+          "Developed and maintained multiple Java Spring Boot microservices, delivering new features for a Telstra Enterprise client portal and improving scalability for high-volume client customizations.",
+          "Reduced direct database dependencies by designing dedicated read/write APIs, improving modularity, reducing tight coupling and optimizing data access performance.",
         ],
       },
     ],
     skills: [
       "Kubernetes",
+      "GitLab CI/CD",
       "OpenTelemetry",
       "New Relic",
       "Splunk",
@@ -57,12 +65,27 @@ export const experiences = [
     roles: [
       {
         points: [
-          "Built data processing and prediction pipelines that improved data reliability and increased accuracy by 45%.",
+          "Improved healthcare data reliability and increased prediction accuracy by 45% by building data processing and prediction pipelines.",
           "Optimized referral alert processes for a global healthcare client, saving $250k annually and boosting operational efficiency.",
         ],
       },
     ],
     skills: ["Python", "Databricks", "PySpark", "Apache Airflow", "SQL", "Data Engineering Pipelines"],
+  },
+  {
+    company: "NYXify Technologies",
+    role: "AI Intern",
+    duration: "March 2024 - May 2024",
+    domain: "Generative AI and LLM Data",
+    roles: [
+      {
+        points: [
+          "Extracted large volumes of public data for AI teams to train custom large language and multimodal models.",
+          "Evaluated AI tools' performance and applied prompt engineering techniques to optimize AI responses.",
+        ],
+      },
+    ],
+    skills: ["Python", "Data Extraction", "LLM Training Data", "Prompt Engineering", "AI Evaluation"],
   },
   {
     company: "Altigreen Propulsion Labs",
@@ -72,12 +95,12 @@ export const experiences = [
     roles: [
       {
         points: [
-          "Enhanced predictive model performance with AutoGluon, improving accuracy by 15%.",
-          "Delivered insights from million-row datasets with 80+ features through analysis and visualization.",
+          "Enhanced predictive models' performance on EV vehicle data with AutoGluon, improving accuracy by 15%.",
+          "Derived key relationships from million-row datasets with 80+ features through EDA and visualization of edge data from a vehicle data-logger (CANedge).",
         ],
       },
     ],
-    skills: ["Python", "AutoGluon", "Machine Learning", "Data Visualization", "SQL", "Predictive Modeling"],
+    skills: ["Python", "AutoGluon", "Machine Learning", "EDA", "Data Visualization", "SQL", "Predictive Modeling"],
   },
 ];
 
@@ -151,9 +174,17 @@ export const projects = [
     technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
     link: "https://github.com/Krinal24/SmartLearnX",
     demoLink: "https://youtu.be/OOuz4ZIQsRQ",
-    highlight: "Top 40 out of 400+ projects - NMIT Hacks Hackathon 2024.",
+    highlight: "Top 40 out of 400+ teams - NMIT Hacks Hackathon 2024",
     description:
-      "A RAG-based personalized AI course generator web-application using Gemini, LangChain, and vector search. The platform offers personalized learning paths based on user goals and performance and generates customized educational content.",
+      "A full-stack, RAG-based AI learning platform built with Gemini, LangChain and vector search. It offers personalized learning paths based on each learner's goals and performance, and generates customized educational content.",
+  },
+  {
+    name: "Folder Organizer Agent",
+    category: "Agentic AI",
+    technologies: ["Agentic AI", "Runs locally", "File content analysis"],
+    highlight: "In progress",
+    description:
+      "An AI agent that runs locally on a laptop and helps tidy cluttered folders: it reads file properties and content, then suggests a curated plan of what to move or delete.",
   },
   {
     name: "Credit Risk Assessment using Ensemble Models & XAI",
@@ -162,7 +193,7 @@ export const projects = [
     link: "https://ieeexplore.ieee.org/abstract/document/10914916",
     highlight: "Published in IEEE Xplore - 2025 3rd International Conference on Intelligent Data Communication Technologies and Internet of Things (IDCIoT)",
     description:
-      "A research that brings CatBoost, XGBoost and LightGBM into an ensemble to improve the prospect of identifying high-risk borrowers for a credit risk assessment dataset using Explainable AI to justify model decisions.",
+      "Research paper on credit risk assessment that combines three boosting models (CatBoost, XGBoost and LightGBM) into an ensemble to identify high-risk borrowers, using Explainable AI to justify model decisions.",
   },
   {
     name: "Customer Churn Prediction Model for Waze App",
@@ -178,7 +209,7 @@ export const projects = [
     category: "Computer Vision",
     technologies: ["Computer Vision", "Regularization", "Bezier Curves", "OpenCV", "Image segmentation and contour analysis", "SVGs"],
     link: "https://github.com/Krinal24/Adobe_Gensolv",
-    highlight: "A challenge for the top 5 percentile of Adobe Gensolve Hackathon Round 1 2024",
+    highlight: "Top 5 percentile, shortlisted for Round 2 - Adobe Gensolve Hackathon 2024",
     description:
       "Identified, regularized and beautified curves in 2D Euclidean space (fitting bezier curves on symmetric segments), by building an algorithm for Symmetry, Regularization & Curve Completion techniques",
   }
@@ -190,6 +221,9 @@ export const achievements = [
   "Amazon ML Summer School 2024 mentee.",
   "Recipient of the Generation Google Scholarship for Women in Computer Science (APAC) 2023.",
   "Co-Lead and Content & Documentation Lead of Google Developers Student Club, NMIT.",
+  "Top 5 percentile and shortlisted for the 2nd round of Adobe Gensolve Hackathon 2024.",
+  "Top 40 out of 400+ teams in NMIT Hacks hackathon 2024 by the CSE Department of NMIT.",
+  "Member and former Vice President of Public Relations at Blue Expression Toastmasters Club, IBM.",
   "Established the NMIT Toastmasters Club and served as President from July to December 2024.",
 ];
 
@@ -344,20 +378,20 @@ export const capabilityLanes = {
   "Intelligent Products": {
     eyebrow: "AI with a job to do",
     description: "I connect machine learning and retrieval systems to experiences that help people learn or decide.",
-    proof: "SmartLearnX combines Gemini, RAG pipelines, LangChain, and vector search.",
+    proof: "SmartLearnX combines Gemini, RAG pipelines, LangChain and vector search; at NYXify I prepared training data for custom multimodal LLMs and tuned AI responses with prompt engineering.",
     skills: ["MCP", "TensorFlow", "PyTorch", "MLflow", "Generative AI", "RAG", "LangChain", "Agentic AI"],
   },
   "Data in Motion": {
     eyebrow: "From raw data to signal",
     description: "I turn large, messy datasets into pipelines, predictions, and decisions teams can use.",
-    proof: "Improved data accuracy by 45% at MathCo and predictive accuracy by 15% at Altigreen.",
+    proof: "Increased prediction accuracy by 45% at MathCo and predictive model accuracy by 15% at Altigreen.",
     skills: ["Python", "PySpark", "Scala", "SQL", "Databricks", "Apache Airflow", "Data Engineering Pipelines"],
   },
   "Code & Architecture": {
     eyebrow: "Backend systems with structure",
     description: "I design maintainable services and APIs that reduce coupling while keeping room for the next feature.",
     proof: "Built Java Spring Boot microservices and dedicated read/write APIs for a Telstra Enterprise client portal.",
-    skills: ["Java", "Spring Boot", "Microservices", "REST APIs", "Power Automate"],
+    skills: ["Java", "Spring Boot", "Microservices", "REST APIs", "GitLab CI/CD", "Power Automate"],
   },
   "Product Experiences": {
     eyebrow: "Interfaces that make systems useful",
@@ -368,7 +402,7 @@ export const capabilityLanes = {
   "Communication & Leadership": {
     eyebrow: "Technical work is also people work",
     description: "I communicate clearly, document thoughtfully, and create communities where people can learn and contribute.",
-    proof: "Led clubs and served in Toastmasters International, including establishing NMIT Toastmasters Club and serving as President from July to December 2024.",
+    proof: "Founded the NMIT Toastmasters Club and served as President (July-December 2024), former VP of Public Relations at Blue Expression Toastmasters Club (IBM), and Co-Lead of Google Developers Student Club, NMIT.",
     skills: ["Technical Communication", "Content & Documentation", "Community Leadership", "Public Speaking", "Club Leadership"],
   },
 };

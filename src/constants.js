@@ -147,6 +147,7 @@ export const projects = [
   {
     name: "SmartLearnX",
     category: "Generative AI",
+    featured: true,
     technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
     link: "https://github.com/Krinal24/SmartLearnX",
     demoLink: "https://youtu.be/OOuz4ZIQsRQ",

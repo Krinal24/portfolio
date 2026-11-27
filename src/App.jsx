@@ -396,28 +396,45 @@ function App() {
               </div>
 
               <div className="project-grid">
-                {projects.map((project, index) => (
-                  <article className={`project-card project-card-${index + 1} scroll-reveal`} key={project.name}>
-                    <div className="project-card-topline">
-                      <span className="project-index">0{index + 1}</span>
-                      <span className="project-type">{project.category}</span>
-                    </div>
-                    <h3>{project.name}</h3>
-                    {project.highlight && <p className="project-highlight">{project.highlight}</p>}
-                    <p>{project.description}</p>
-                    {project.demoLink && (
-                      <a className="project-demo-link" href={project.demoLink} target="_blank" rel="noreferrer">
-                        <FaYoutube aria-hidden="true" /> Watch the demo
-                      </a>
-                    )}
-                    <div className="project-footer">
-                      <div className="skill-tags">
-                        {project.technologies.map((technology) => <span key={technology}>{technology}</span>)}
+                {projects.map((project, index) => {
+                  const thumbnail = youtubeThumbnail(project.demoLink);
+                  return (
+                    <article
+                      className={`project-card project-card-${index + 1} ${project.featured ? "project-card-featured" : ""} scroll-reveal`}
+                      key={project.name}
+                      onPointerMove={handleSpotlightMove}
+                    >
+                      <div className="project-card-body">
+                        <div className="project-card-topline">
+                          <span className="project-index">0{index + 1}</span>
+                          <span className="project-type">{project.featured ? `Featured · ${project.category}` : project.category}</span>
+                        </div>
+                        <h3>{project.name}</h3>
+                        {project.highlight && <p className="project-highlight">{project.highlight}</p>}
+                        <p>{project.description}</p>
+                        {project.demoLink && !project.featured && (
+                          <a className="project-demo-link" href={project.demoLink} target="_blank" rel="noreferrer">
+                            <FaYoutube aria-hidden="true" /> Watch the demo
+                          </a>
+                        )}
+                        <div className="project-footer">
+                          <div className="skill-tags">
+                            {project.technologies.map((technology) => <span key={technology}>{technology}</span>)}
+                          </div>
+                          {project.link && <a href={project.link} target="_blank" rel="noreferrer">View project <span aria-hidden="true">↗</span></a>}
+                        </div>
                       </div>
-                      {project.link && <a href={project.link} target="_blank" rel="noreferrer">View project <span aria-hidden="true">↗</span></a>}
-                    </div>
-                  </article>
-                ))}
+
+                      {project.featured && thumbnail && (
+                        <a className="project-media" href={project.demoLink} target="_blank" rel="noreferrer" aria-label={`Watch the ${project.name} demo on YouTube`}>
+                          <span className="project-media-bar" aria-hidden="true"><i /><i /><i /></span>
+                          <img src={thumbnail} alt={`${project.name} app screenshot`} loading="lazy" decoding="async" />
+                          <span className="project-media-play" aria-hidden="true"><FaYoutube /> Watch the demo</span>
+                        </a>
+                      )}
+                    </article>
+                  );
+                })}
               </div>
             </section>
 
@@ -678,6 +695,19 @@ function App() {
       <Analytics />
     </div>
   );
+}
+
+// "https://youtu.be/ID" or "...watch?v=ID" -> the video's large thumbnail.
+function youtubeThumbnail(url) {
+  const id = url?.match(/(?:youtu\.be\/|v=)([\w-]{11})/)?.[1];
+  return id ? `https://i.ytimg.com/vi/${id}/maxresdefault.jpg` : null;
+}
+
+// Feeds the pointer position to CSS so the card's spotlight glow follows the cursor.
+function handleSpotlightMove(event) {
+  const bounds = event.currentTarget.getBoundingClientRect();
+  event.currentTarget.style.setProperty("--spot-x", `${event.clientX - bounds.left}px`);
+  event.currentTarget.style.setProperty("--spot-y", `${event.clientY - bounds.top}px`);
 }
 
 // Wraps figures like "1000+", "30-40%" or "$250k" in <strong> so impact numbers stand out.

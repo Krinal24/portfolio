@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Analytics } from "@vercel/analytics/react"
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./base.css";
 import "./App.css";
 import { certificateItems, education, experiences, projects, taglines, promptOptions } from "./constants";
 import ChatbotPage from "./ChatbotPage";

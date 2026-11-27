@@ -1,7 +1,7 @@
 import { FaGithub, FaLinkedin, FaKaggle } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 
-export const CONTACT_EMAIL = "hello@krinalnaghera.dev";
+export const CONTACT_EMAIL = "nagherakrinal@gmail.com";
 
 export const socialLinks = [
   { label: "GitHub", href: "https://github.com/Krinal24", Icon: FaGithub },

@@ -323,3 +323,11 @@ export const promptOptions = [
   "Certifications & Achievements",
   "Something fun"
 ];
+
+// Headline numbers shown under the hero. `value` counts up; `display` is shown as-is.
+export const impactStats = [
+  { value: 1000, suffix: "+", label: "applications brought under one observability standard", source: "Telstra" },
+  { display: "30–40%", label: "faster incident detection", source: "Telstra" },
+  { prefix: "$", value: 250, suffix: "k", label: "saved a year by optimizing referral alerts", source: "MathCo" },
+  { display: "IEEE", label: "published research on explainable credit-risk models", source: "IDCIoT 2025" },
+];

@@ -4,10 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { certificateItems, education, experiences, projects, taglines, promptOptions } from "./constants";
 import ChatbotPage from "./ChatbotPage";
+import SiteNav from "./components/SiteNav";
+import ImpactStats from "./components/ImpactStats";
 
 import { FaBook, FaGithub, FaLinkedin, FaKaggle, FaSpotify, FaYoutube } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { FiSun, FiMoon } from "react-icons/fi";
 
 const capabilityLanes = {
   "Reliable Systems": {
@@ -265,21 +266,7 @@ function App() {
         />
       ) : (
         <>
-          <nav className="navbar">
-        <div className="nav-logo">Krinal N</div>
-
-        <div className="nav-links">
-          <a href="#home">Home</a>
-
-          <button
-            className="theme-toggle"
-            onClick={() => setDarkMode(!darkMode)}
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? <FiSun /> : <FiMoon />}
-          </button>
-        </div>
-      </nav>
+          <SiteNav darkMode={darkMode} onToggleTheme={() => setDarkMode(!darkMode)} />
 
 <section className="hero" id="home">
   <div className="hero-inner hero-layout">
@@ -355,6 +342,8 @@ function App() {
 </section>
 
           <main className="portfolio-content" ref={portfolioContentRef}>
+            <ImpactStats />
+
             <section className="portfolio-section experience-section" id="experience">
               <div className="section-heading">
                 <div>

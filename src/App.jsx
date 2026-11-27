@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./base.css";
 import "./App.css";
 import ChatbotPage from "./ChatbotPage";
-import CustomCursor from "./components/CustomCursor";
+import CursorTrail from "./components/CursorTrail";
 import SiteNav from "./components/SiteNav";
 import Hero from "./components/Hero";
 import ImpactStats from "./components/ImpactStats";
@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="app">
-      <CustomCursor />
+      <CursorTrail />
       {selectedPrompt ? (
         <ChatbotPage
           selectedPrompt={selectedPrompt}

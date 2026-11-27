@@ -2811,3 +2811,93 @@ body.dark .project-media-bar {
     grid-column: 1 / -1;
   }
 }
+
+/* ---------- Hero status chip ---------- */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 26px;
+  padding: 8px 14px 8px 12px;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #374151;
+  font-size: 0.86rem;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(6px);
+}
+
+.status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.status-dot::after {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(16, 185, 129, 0.5);
+  content: "";
+  animation: status-pulse 2.2s ease-out infinite;
+}
+
+@keyframes status-pulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+body.dark .status-chip {
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(15, 23, 42, 0.6);
+  color: #e2e8f0;
+}
+
+/* ---------- Research form frame ---------- */
+.research-form {
+  overflow: hidden;
+  padding: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.research-form iframe {
+  display: block;
+  border: 0;
+  border-radius: 10px;
+}
+
+.research-form-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #6b7280;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.research-form-link:hover {
+  color: #f59e0b;
+}
+
+body.dark .research-form {
+  border-color: rgba(250, 204, 21, 0.25);
+  background: #f8fafc;
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.5);
+}
+
+body.dark .research-form-link {
+  color: #94a3b8;
+}
+
+@media (max-width: 520px) {
+  .status-chip {
+    font-size: 0.76rem;
+  }
+}

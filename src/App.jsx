@@ -50,6 +50,8 @@ const capabilityLanes = {
   },
 };
 
+const RESEARCH_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScoHUkAQnbwSVi6qxjqv7VioAOAh_1V46Jqkm8Ra4gPaA_8Cw/viewform";
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [typedText, setTypedText] = useState("");
@@ -67,6 +69,7 @@ function App() {
   const portfolioContentRef = useRef(null);
   const certificateTrackRef = useRef(null);
   const certificateWheelVelocityRef = useRef(0);
+  const certificatePausedRef = useRef(false);
 
   useEffect(() => {
     document.body.classList.toggle("dark", darkMode);
@@ -159,13 +162,17 @@ function App() {
     if (!track) return undefined;
 
     let position = 0;
+    let drift = -24;
     let lastTime = performance.now();
     let animationFrame;
 
     const animateCertificates = (time) => {
       const elapsed = Math.min(time - lastTime, 40);
       const wheelVelocity = certificateWheelVelocityRef.current;
-      const velocity = -24 + wheelVelocity;
+      // Ease the drift speed toward 0 while hovered/focused and back to -24px/s otherwise.
+      const targetDrift = certificatePausedRef.current ? 0 : -24;
+      drift += (targetDrift - drift) * Math.min(1, elapsed / 180);
+      const velocity = drift + wheelVelocity;
       const loopWidth = track.scrollWidth / 2;
 
       position += (velocity * elapsed) / 1000;
@@ -272,6 +279,11 @@ function App() {
 <section className="hero" id="home">
   <div className="hero-inner hero-layout">
     <div className="hero-copy">
+      <p className="status-chip">
+        <span className="status-dot" aria-hidden="true" />
+        Currently: SRE &amp; observability at Telstra · MSc in ML &amp; AI
+      </p>
+
       <p className="greeting">Hi There.</p>
 
       <h1 className="name">
@@ -512,6 +524,10 @@ function App() {
                 className="certificate-marquee"
                 aria-label="Certificates and acknowledgements"
                 onWheel={handleCertificateWheel}
+                onPointerEnter={() => { certificatePausedRef.current = true; }}
+                onPointerLeave={() => { certificatePausedRef.current = false; }}
+                onFocus={() => { certificatePausedRef.current = true; }}
+                onBlur={() => { certificatePausedRef.current = false; }}
               >
                 <div className="certificate-track" ref={certificateTrackRef}>
                   {[...certificateItems, ...certificateItems].map((certificate, index) => (
@@ -639,18 +655,19 @@ function App() {
                   </div>
                   <p className="research-invite">Have a research topic to share? Shoot!</p>
                   <div className="research-form">
-  <iframe
-    src="https://docs.google.com/forms/d/e/1FAIpQLScoHUkAQnbwSVi6qxjqv7VioAOAh_1V46Jqkm8Ra4gPaA_8Cw/viewform?embedded=true"
-    width="100%"
-    height="419"
-    frameBorder="0"
-    marginHeight="0"
-    marginWidth="0"
-    title="Research topic suggestion form"
-  >
-    Loading…
-  </iframe>
-</div>
+                    <iframe
+                      src={`${RESEARCH_FORM_URL}?embedded=true`}
+                      width="100%"
+                      height="470"
+                      loading="lazy"
+                      title="Research topic suggestion form"
+                    >
+                      Loading…
+                    </iframe>
+                  </div>
+                  <a className="research-form-link" href={RESEARCH_FORM_URL} target="_blank" rel="noreferrer">
+                    Form not loading? Open it in a new tab <span aria-hidden="true">↗</span>
+                  </a>
                   <div className="fun-item quote-item research-quote">
                     <span className="fun-symbol book-symbol" aria-hidden="true"><FaBook /></span>
                     <div>

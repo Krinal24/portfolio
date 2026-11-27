@@ -202,52 +202,52 @@ export const certificateItems = [
   {
     title: "IBM Data Science Foundations Level 2",
     type: "Certificate",
-    image: "/certificates/ibm-ds-foundations.png",
+    image: "/certificates/ibm-ds-foundations.webp",
   },
   {
     title: "Tensorflow Developer: Zero to Mastery",
     type: "Certificate",
-    image: "/certificates/tensorflow-developer-mastery.png",
+    image: "/certificates/tensorflow-developer-mastery.webp",
   },
   {
     title: "Google Advanced Data Analytics",
     type: "Certificate",
-    image: "/certificates/google-advanced-data-analytics.png",
+    image: "/certificates/google-advanced-data-analytics.webp",
   },
   {
     title: "Google Cloud Gen AI Academy",
     type: "Certificate",
-    image: "/certificates/gen-ai-academy.png",
+    image: "/certificates/gen-ai-academy.webp",
   },
   {
     title: "Generation Google Scholarship APAC 2023",
     type: "Recognition",
-    image: "/certificates/generation-google-scholarship.png",
+    image: "/certificates/generation-google-scholarship.webp",
   },
   {
     title: "Amazon ML Summer School 2024",
     type: "Recognition",
-    image: "/certificates/amazon-ml-summer-school.png",
+    image: "/certificates/amazon-ml-summer-school.webp",
   },
   {
     title: "Adobe Gensolve Challenge",
     type: "Recognition",
-    image: "/certificates/adobe-gensolv.png",
+    image: "/certificates/adobe-gensolv.webp",
   },
   {
     title: "Google Developers Student Club, NMIT",
     type: "Leadership",
-    image: "/certificates/gdsc-nmit.png",
+    image: "/certificates/gdsc-nmit.webp",
   },
   {
     title: "NMIT Toastmasters Club",
     type: "Leadership",
-    image: "/certificates/leader-award.png",
+    image: "/certificates/leader-award.webp",
   },
   {
     title: "Toastmasters International (District 92, 2024)",
     type: "Leadership",
-    image: "/certificates/triple-crown-award.png",
+    image: "/certificates/triple-crown-award.webp",
   }
 ];
 

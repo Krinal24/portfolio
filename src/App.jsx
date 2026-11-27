@@ -6,9 +6,10 @@ import { certificateItems, education, experiences, projects, taglines, promptOpt
 import ChatbotPage from "./ChatbotPage";
 import SiteNav from "./components/SiteNav";
 import ImpactStats from "./components/ImpactStats";
+import SiteFooter from "./components/SiteFooter";
+import { CONTACT_EMAIL, socialLinks } from "./components/socialLinks";
 
-import { FaBook, FaGithub, FaLinkedin, FaKaggle, FaSpotify, FaYoutube } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
+import { FaBook, FaSpotify, FaYoutube } from "react-icons/fa";
 
 const capabilityLanes = {
   "Reliable Systems": {
@@ -287,18 +288,11 @@ function App() {
       <p className="subtitle">Find me on:</p>
 
       <div className="socials">
-        <a href="https://github.com/Krinal24" target="_blank" rel="noreferrer" aria-label="GitHub">
-          <FaGithub />
-        </a>
-        <a href="https://linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-          <FaLinkedin />
-        </a>
-        <a href="https://leetcode.com/u/Kinu2404" target="_blank" rel="noreferrer" aria-label="LeetCode">
-          <SiLeetcode />
-        </a>
-        <a href="https://www.kaggle.com/krinalnaghera" target="_blank" rel="noreferrer" aria-label="Kaggle">
-          <FaKaggle />
-        </a>
+        {socialLinks.map((social) => (
+          <a key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label}>
+            <social.Icon />
+          </a>
+        ))}
       </div>
     </div>
 
@@ -330,12 +324,10 @@ function App() {
         
       </div>
       <div className="hero-side">
-        <button type="button" className="connect-card" aria-label="Connect with me"
-          onClick={() => handlePromptClick("Something fun")}
-        >
+        <a className="connect-card" href="#contact">
           <span>Connect with me</span>
-          <span className="connect-arrow">→</span>
-        </button>
+          <span className="connect-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </div>
@@ -588,7 +580,7 @@ function App() {
                     <h3>Ask me anything.</h3>
                     <p>Want to talk about engineering, AI, learning, or build a project in AI, ML or Data with me? Send me a note or reach out on LinkedIn.</p>
                     <div className="fun-links">
-                      <a href="mailto:hello@krinalnaghera.dev">Email me <span aria-hidden="true">↗</span></a>
+                      <a href={`mailto:${CONTACT_EMAIL}`}>Email me <span aria-hidden="true">↗</span></a>
                       <a href="https://www.linkedin.com/in/krinal-naghera/" target="_blank" rel="noreferrer">DM on LinkedIn <span aria-hidden="true">↗</span></a>
                     </div>
                   </article>
@@ -678,6 +670,7 @@ function App() {
               </div>
             </section>
           </main>
+          <SiteFooter />
         </>
       )}
       <Analytics />

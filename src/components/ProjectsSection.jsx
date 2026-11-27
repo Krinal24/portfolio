@@ -55,6 +55,9 @@ function ProjectCard({ project, index }) {
   );
 }
 
+// Regular (non-featured) cards sit three across when they fill whole rows, otherwise two across.
+const regularCount = projects.filter((project) => !project.featured).length;
+
 function ProjectsSection() {
   return (
     <section className="portfolio-section projects-section" id="projects">
@@ -65,7 +68,7 @@ function ProjectsSection() {
         intro="Small, focused systems where machine learning meets thoughtful product experiences."
       />
 
-      <div className="project-grid">
+      <div className={`project-grid ${regularCount % 3 === 0 ? "project-grid-3" : "project-grid-2"}`}>
         {projects.map((project, index) => <ProjectCard project={project} index={index} key={project.name} />)}
       </div>
     </section>

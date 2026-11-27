@@ -54,7 +54,7 @@ function Hero() {
         <div className="hero-copy">
           <p className="status-chip">
             <span className="status-dot" aria-hidden="true" />
-            Currently: SRE &amp; observability at Telstra · MSc in ML &amp; AI
+            Currently: Platform Engineer at Telstra · MSc in ML &amp; AI
           </p>
 
           <p className="greeting">Hi There.</p>

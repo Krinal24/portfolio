@@ -117,6 +117,7 @@ export const skills = {
 export const projects = [
   {
     name: "SmartLearnX",
+    category: "Generative AI",
     technologies: ["Gemini AI", "RAG Pipelines", "React", "Node.js", "LangChain", "Vector Search"],
     link: "https://github.com/Krinal24/SmartLearnX",
     demoLink: "https://youtu.be/OOuz4ZIQsRQ",
@@ -126,6 +127,7 @@ export const projects = [
   },
   {
     name: "Credit Risk Assessment using Ensemble Models & XAI",
+    category: "Research · ML",
     technologies: ["Explainable AI", "Financial Data Systems", "Ensemble Modelling", "AutoGluon"],
     link: "https://ieeexplore.ieee.org/abstract/document/10914916",
     highlight: "Published in IEEE Xplore - 2025 3rd International Conference on Intelligent Data Communication Technologies and Internet of Things (IDCIoT)",
@@ -134,6 +136,7 @@ export const projects = [
   },
   {
     name: "Customer Churn Prediction Model for Waze App",
+    category: "Data Science",
     technologies: ["Machine Learning", "Colab", "Data Analysis"],
     link: "https://github.com/Krinal24/Google-Data-Analytics",
     highlight: "Google Advanced Data Analytics Certification Capstone",
@@ -142,6 +145,7 @@ export const projects = [
   },
   {
     name: "Curvetopia - Adobe Gensolve (with GFG)",
+    category: "Computer Vision",
     technologies: ["Computer Vision", "Regularization", "Bezier Curves", "OpenCV", "Image segmentation and contour analysis", "SVGs"],
     link: "https://github.com/Krinal24/Adobe_Gensolv",
     highlight: "A challenge for the top 5 percentile of Adobe Gensolve Hackathon Round 1 2024",
